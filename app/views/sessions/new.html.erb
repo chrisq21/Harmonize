@@ -1,0 +1,18 @@
+<div class='container'>
+	<h1>Log In</h1>
+	<% if flash[:errors] %>
+		<% flash[:errors].each do |error| %>
+			<p><%= error %></p>
+		<% end %>
+	<% end %>
+	<% if flash[:message] %>
+		<p><%= flash[:message] %></p>
+	<% end %>
+	<%= simple_form_for @user, url: sessions_path, html: {class: 'form-horizontal'} do |form_field| %>
+		<%= form_field.input :email, label: 'Email' %>
+		<%= form_field.input :password, label: 'Password' %>
+		<%= form_field.button :submit, value:'Log In', class: "btn btn-primary" %>
+	<% end %>
+</div>
+
+<%= link_to "Don't Have An Account? Register", new_user_path %>
