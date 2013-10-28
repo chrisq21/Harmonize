@@ -15,3 +15,10 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
+$(document).ready(function() {
+	var instr_counter = 1
+	$(document).on('click', '.add_instrument', function(){
+		instr_counter++;
+		$('.instrument_area').append('<select name="instruments[main_instruments'+instr_counter+']"><option value="guitar">Guitar</option><option value="drums">Drums</option><option value="singer">Singer</option><option value="bass">Bass</option></select>');
+	});
+});

@@ -2,3 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
+
+.profile_image {
+	width: 200px;
+}
+
+.music_labels {
+	font-weight: bold;
+}
+
+.instrument_area select {
+	display: block;
+}
