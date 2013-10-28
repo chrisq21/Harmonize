@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131025222612) do
+ActiveRecord::Schema.define(version: 20131028170559) do
+
+  create_table "experiences", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "start"
+    t.datetime "end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "genres", force: true do |t|
+    t.string   "genre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "instruments", force: true do |t|
+    t.string   "intstrument"
+    t.integer  "experience"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "first_name"
@@ -22,11 +44,6 @@ ActiveRecord::Schema.define(version: 20131025222612) do
     t.datetime "updated_at"
     t.string   "city"
     t.integer  "age"
-    t.string   "main_instruments"
-    t.string   "other_instruments"
-    t.string   "main_genres"
-    t.string   "other_genres"
-    t.string   "links"
   end
 
 end

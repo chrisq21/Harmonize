@@ -14,13 +14,29 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.new(user_params)
-  	if @user.save
-  			sign_in(@user)
-  		  redirect_to user_path(@user[:id])
-  	else
-  		redirect_to new_user_path, flash: { errors: @user.errors.full_messages }
-  	end
+		instrument_string = ''
+		instruments = Array.new
+		params[:instruments].each do |instrument|
+			instruments.push(instrument[1])
+		end
+		instrument_string = instruments.join(',')
+		render text: instrument_string
+		# render text: instruments
+		# if params[:user][:confirm_password] == params[:user][:password]
+		# 	@user = User.new(user_params)	
+		# 	if @user.save
+	 #  			sign_in(@user)
+	 #  			redirect_to user_path(@user[:id])
+	 #  		else
+	 #  			redirect_to new_user_path, flash[:notice] = @user.errors.full_messages
+	 #  		end
+		# else	
+		# 	flash[:notice] = Array.new()
+		# 	flash[:notice].push('Passwords Did Not Match')
+		# 	redirect_to new_user_path
+		# end
+		
+  		
 	end
 
 	def edit
@@ -39,3 +55,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email, :password)
   end
 end
+	

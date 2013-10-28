@@ -1,16 +1,63 @@
 <div class='container'>
-	<h1>New User</h1>
-
 	<% if flash[:notice] %>
 		<% flash[:notice].each do |error| %>
 			<h3 class='errors'><%= error %></h3>
 		<% end %> 	
 	<% end %> 
+	<div class='row'>
+		<div class='col-md-6'>
 	<%= simple_form_for(@user, html: {class: 'form' }) do |f| %>
 		<%= f.input :first_name %>
 		<%= f.input :last_name %>
 		<%= f.input :email %>
 		<%= f.input :password %>
+		<%= f.input :confirm_password %>
+		 <a href="" class='add_instrument' data-remote="true">Add Instrument</a> 
+		<label for="main_instruments">What instruments would you be willing to play with other people?</label>
+		<!-- <div class='instrument_area'> -->
+		
+		<!-- </div> -->
 		<%= f.button :submit, class: "btn btn-primary"  %>
 	<% end %> 
+		</div>
+		<div class='col-md-6'>
+			<h3>Main Instruments</h3>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+				<li class="dropdown-submenu">
+					<a tabindex="-1" href="#">Guitar</a>
+					<ul class="dropdown-menu">
+						<li><a tabindex="-1" href="#">Acoustic</a></li>
+						<li><a href="#">Banjo</a></li>
+						<li><a href="#">Bass</a></li>
+						<li><a href="#">Electric</a></li>
+					</ul>
+				</li>
+				<li class="dropdown-submenu">
+					<a tabindex="-1" href="#">Drums</a>
+					<ul class="dropdown-menu">
+						<li><a tabindex="-1" href="#">Drum Set</a></li>
+						<li><a href="#">African Drums</a></li>
+					</ul>
+				</li>
+				<li class="dropdown-submenu">
+					<a tabindex="-1" href="#">Keyboard</a>
+					<ul class="dropdown-menu">
+						<li><a tabindex="-1" href="#">Piano</a></li>
+						<li><a href="#">Synth</a></li>
+						<li><a href="#">Electric</a></li>
+						<li><a href="#">Organ</a></li>
+						<li><a href="#">Percussive</a></li>
+					</ul>
+				</li>
+				<li class="dropdown-submenu">
+					<a tabindex="-1" href="#">Vocals</a>
+					<ul class="dropdown-menu">
+						<li><a tabindex="-1" href="#">Singer</a></li>
+						<li><a href="#">Rapper</a></li>
+						<li><a href="#">Beat Boxer</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>
