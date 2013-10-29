@@ -1,34 +1,38 @@
 
 
 <div class='container'>
+	<div id='top'></div>
 	<div class='row'>
 		<div class='profile_image col-md-6'><%= image_tag "aaron.png" %></div>
 		<div class='col-md-6'>
 			<!-- Main Info -->
-			<h1><%= @user.first_name + " " + @user.last_name %></h1>
+
+			<h1><span class='user_info' id='name'><%= @user.first_name + " " + @user.last_name %></span></h1>
 			<h3>Main Instrument(s)
 			<% @user.instruments.each do |instrument| %>
 			 <%= instrument.instrument %>
 			 <% end %>
 			</h3>
-			<h4>Lives in <%= @user.city %></h4>
-			<h4>Email: <%= @user.email %></h4>
+			<h4>Lives in <span class='user_info' id='city'><%= @user.city %></span></h4>
+			<h4>Email: <span class='user_info' id='email'><%= @user.email %></span></h4>
 		</div>
 		<% if @user.id == session[:user_id] %>
-		<%= link_to "Edit Profile",edit_user_path(@user.id) %>
+		<a data-remote='true' id='edit_profile'>Edit Profile</a>
 		<% end %>
 	</div>
 	<div class='row'>
 		<div class='col-md-6'>
 			<!-- Bio -->
 			<h2>Bio</h2>
-			<p><%= @user.bio %></p>
+			<p id='bio'><%= @user.bio %></p>
 			<!-- General Info -->
 			<h2>General Info</h2>
-			<label for="in_band">
+			<label for="in_band" id='inband'>
 				<% if @user.inband  %>
+				<input type="hidden" id='inband_value' value='true'>
 				<%= @user.first_name + ' is currently in a band' %>
 				<% else %>
+				<input type="hidden" id='inband_value' value='false'>
 				<%= @user.first_name + ' is not currently in a band' %>
 				<% end %>
 			</label>
@@ -45,9 +49,9 @@
 				<%= genre.genre %>
 				<% end %>
 			</label>
-			<label for="current_group">
+			<label for="current_group" id='current_band'>
 			<% if @user.inband %>
-			Current Band: <%= @user.current_band %>
+			Current Band: <span class='user_info'><%= @user.current_band %></span>
 			<% end %>
 			</label>
 			<!-- Experience -->
@@ -68,7 +72,9 @@
 				<%= link_to link.title, 'http://facebook.com', target: '_blank' %>
 			<% end %>	
 		</div>
-
-
 	</div>
+	<input id='user_id' type="hidden" value=<%= @user.id %>>
+	<input type="hidden" name='authenticity_token' id='token' value=<%=form_authenticity_token %>>
+	
+	<div id='bottom'></div>
 </div>

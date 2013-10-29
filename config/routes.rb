@@ -1,7 +1,8 @@
 Harmonize::Application.routes.draw do
   root "users#index"
   get "login", to: "sessions#new", as: :login
-  resources :users
+  resources :users, except: :update
+  post "users/:id", to: "users#update"
   delete "sessions/:id", to: "sessions#destroy", as: :destroy
   resources :sessions, except: :destroy
 

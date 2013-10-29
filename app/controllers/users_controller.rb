@@ -27,6 +27,12 @@ class UsersController < ApplicationController
 					new_genre = @user.genres.new(genre: g)
 					new_genre.save
 				end	
+				seeking = Seeking.new(user_id: @user.id)
+				seeking_instruments = Array.new(params[:seeking])
+				seeking_instruments.each do |s|
+					seeking.instruments.new(instrument: s).save
+				end	
+				seeking.save
 	  			sign_in(@user)
 	  			redirect_to user_path(@user[:id])
 	  		else
@@ -44,7 +50,7 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		
+		render text: params
 	end
 
 	def signed_in_user
@@ -52,7 +58,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :age, :city, :bio, :inband)
   end
 end
 	

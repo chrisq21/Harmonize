@@ -18,6 +18,28 @@
 $(document).ready(function() {
 	var instr_counter = 0;
 	var genre_counter = 0;
+	var seeking_counter = 0;
+
+
+	$('#edit_profile').click(function() {
+		var name = $('#name').text();
+		var city = $('#city').text();
+		var email = $('#email').text();
+		var bio = $('#bio').text();
+		var id = $('#user_id').val();
+		var token = $('#token').val();
+		var inband = $('#inband_value').val();
+		$('#name').html('<input type="text" value="'+name+'"">');
+		$('#city').html('<input type="text" value="'+city+'"">');
+		$('#email').html('<input type="text" value="'+email+'"">');
+		$('#bio').html('<textarea type="text">'+bio+'</textarea>');
+		//Set the default value of the radio buttons depending on the user value
+		
+		if(inband == 'true')
+			$('#inband').html('In Band? <input type="radio" name="inband" value=true>Yes<input type="radio" name="inband" value=false>No')
+		$('#bottom').append("<input type='submit'>");
+		$('#bottom').html("<form action='../users/"+id+"' method='post'><input type='hidden' name='user[name]' value='"+name+"'><input type='hidden' name='user[city]' value='"+city+"'><input type='hidden' name='user[email]' value='"+email+"'><input type='hidden' name='user[bio]' value='"+bio+"'><input type='hidden' name='authenticity_token' value="+token+"><input type='submit'></form>");
+	});
 
 	$(document).on('click', '.instr_options li a', function(){
 		instr_counter++;
@@ -27,11 +49,17 @@ $(document).ready(function() {
 
 	});
 
+	$(document).on('click', '.seeking_options li a', function(){
+		seeking_counter++;
+		$('.register_form').append('<input type="hidden" name="seeking[]" id="seeking'+seeking_counter+'">');
+		$('#seeking'+seeking_counter).val($(this).text());
+		$('#seeking_results').append($(this).text() + " ");
+	});
+
 	$(document).on('click', '.genre_options a', function(){
 		genre_counter++;
 		$('.register_form').append('<input type="hidden" name="genres[]" id="genre'+genre_counter+'">');
 		$('#genre'+genre_counter).val($(this).text());
 		$('#genre_results').append($(this).text() + " ");
-
 	});
 });
