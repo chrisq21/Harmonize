@@ -6,58 +6,126 @@
 	<% end %> 
 	<div class='row'>
 		<div class='col-md-6'>
-	<%= simple_form_for(@user, html: {class: 'form' }) do |f| %>
+	<%= simple_form_for(@user, html: {class: 'register_form' }) do |f| %>
 		<%= f.input :first_name %>
 		<%= f.input :last_name %>
 		<%= f.input :email %>
 		<%= f.input :password %>
 		<%= f.input :confirm_password %>
-		 <a href="" class='add_instrument' data-remote="true">Add Instrument</a> 
-		<label for="main_instruments">What instruments would you be willing to play with other people?</label>
-		<!-- <div class='instrument_area'> -->
-		
-		<!-- </div> -->
 		<%= f.button :submit, class: "btn btn-primary"  %>
+		
 	<% end %> 
 		</div>
 		<div class='col-md-6'>
-			<h3>Main Instruments</h3>
-			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
-				<li class="dropdown-submenu">
-					<a tabindex="-1" href="#">Guitar</a>
-					<ul class="dropdown-menu">
-						<li><a tabindex="-1" href="#">Acoustic</a></li>
-						<li><a href="#">Banjo</a></li>
-						<li><a href="#">Bass</a></li>
-						<li><a href="#">Electric</a></li>
-					</ul>
-				</li>
-				<li class="dropdown-submenu">
-					<a tabindex="-1" href="#">Drums</a>
-					<ul class="dropdown-menu">
-						<li><a tabindex="-1" href="#">Drum Set</a></li>
-						<li><a href="#">African Drums</a></li>
-					</ul>
-				</li>
-				<li class="dropdown-submenu">
-					<a tabindex="-1" href="#">Keyboard</a>
-					<ul class="dropdown-menu">
-						<li><a tabindex="-1" href="#">Piano</a></li>
-						<li><a href="#">Synth</a></li>
-						<li><a href="#">Electric</a></li>
-						<li><a href="#">Organ</a></li>
-						<li><a href="#">Percussive</a></li>
-					</ul>
-				</li>
-				<li class="dropdown-submenu">
-					<a tabindex="-1" href="#">Vocals</a>
-					<ul class="dropdown-menu">
-						<li><a tabindex="-1" href="#">Singer</a></li>
-						<li><a href="#">Rapper</a></li>
-						<li><a href="#">Beat Boxer</a></li>
-					</ul>
-				</li>
-			</ul>
+			<div class='instrument_options'>
+				<h3>Main Instruments</h3>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+					<li class="dropdown-submenu">
+						<a tabindex="-1" href="#">Guitar</a>
+						<ul class="dropdown-menu instr_options">
+							<li><a tabindex="-1" href="#">Acoustic</a></li>
+							<li class='option'><a href="#">Banjo</a></li>
+							<li><a href="#">Bass</a></li>
+							<li><a href="#">Electric Guitar</a></li>
+						</ul>
+					</li>
+					<li class="dropdown-submenu instr_options">
+						<a tabindex="-1" href="#">Drums</a>
+						<ul class="dropdown-menu">
+							<li><a tabindex="-1" href="#">Drum Set</a></li>
+							<li><a href="#">African Drums</a></li>
+						</ul>
+					</li>
+					<li class="dropdown-submenu instr_options">
+						<a tabindex="-1" href="#">Keyboard</a>
+						<ul class="dropdown-menu">
+							<li><a tabindex="-1" href="#">Piano</a></li>
+							<li><a href="#">Synth</a></li>
+							<li><a href="#">Electric</a></li>
+							<li><a href="#">Organ</a></li>
+							<li><a href="#">Percussive</a></li>
+						</ul>
+					</li>
+					<li class="dropdown-submenu instr_options">
+						<a tabindex="-1" href="#">Vocals</a>
+						<ul class="dropdown-menu">
+							<li><a tabindex="-1" href="#">Singer</a></li>
+							<li><a href="#">Rapper</a></li>
+							<li><a href="#">Beat Boxer</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<h4 id='instrument_results'></h4>
+		<div class='genre_options'>
+				<h3>Genres</h3>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+					<li class="dropdown-submenu">
+						<a tabindex="-1" href="#">Rock</a>
+						<ul class="dropdown-menu">
+							<li><a tabindex="-1" href="#">Metal</a></li>
+							<li class='genre_options'><a href="#">Alternative</a></li>
+							<li class='genre_options'><a href="#">Post Rock</a></li>
+							<li class='genre_options'><a href="#">Classic Rock</a></li>
+							<li class='genre_options'><a href="#">Punk</a></li>
+							<li class='genre_options'><a href="#">Indie</a></li>
+						</ul>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">Blues</a>	
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">Electronic</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">Country</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">Folk</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">Celtic</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">Soul</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">Funk</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">R&B</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">Hip Hop</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">Rap</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">Pop</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">Covers</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">Reggae</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">Jazz</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">Ska</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">Latin</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a tabindex="-1" href="#">Bluegrass</a>
+					</li>
+				</ul>
+			</div>
+			<div id='genre_results'></div>
 		</div>
 	</div>
 </div>

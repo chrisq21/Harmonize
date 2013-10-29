@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  instrument_id: 
   title: MyString
   description: MyText
-  start: 2013-10-28 10:05:59
-  end: 2013-10-28 10:05:59
+  length: MyString
 
 two:
+  instrument_id: 
   title: MyString
   description: MyText
-  start: 2013-10-28 10:05:59
-  end: 2013-10-28 10:05:59
+  length: MyString

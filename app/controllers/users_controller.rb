@@ -13,30 +13,30 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
-	def create
-		instrument_string = ''
-		instruments = Array.new
-		params[:instruments].each do |instrument|
-			instruments.push(instrument[1])
+	def create	
+		if params[:user][:confirm_password] == params[:user][:password]
+			@user = User.new(user_params)	
+			if @user.save
+				instruments = Array.new(params[:instruments])
+				instruments.each do |i|
+					new_instrument = @user.instruments.new(instrument: i)
+					new_instrument.save
+				end	
+				genres = Array.new(params[:genres])
+				genres.each do |g|
+					new_genre = @user.genres.new(genre: g)
+					new_genre.save
+				end	
+	  			sign_in(@user)
+	  			redirect_to user_path(@user[:id])
+	  		else
+	  			redirect_to new_user_path, flash[:notice] = @user.errors.full_messages
+	  		end
+		else	
+			flash[:notice] = Array.new()
+			flash[:notice].push('Passwords Did Not Match')
+			redirect_to new_user_path
 		end
-		instrument_string = instruments.join(',')
-		render text: instrument_string
-		# render text: instruments
-		# if params[:user][:confirm_password] == params[:user][:password]
-		# 	@user = User.new(user_params)	
-		# 	if @user.save
-	 #  			sign_in(@user)
-	 #  			redirect_to user_path(@user[:id])
-	 #  		else
-	 #  			redirect_to new_user_path, flash[:notice] = @user.errors.full_messages
-	 #  		end
-		# else	
-		# 	flash[:notice] = Array.new()
-		# 	flash[:notice].push('Passwords Did Not Match')
-		# 	redirect_to new_user_path
-		# end
-		
-  		
 	end
 
 	def edit

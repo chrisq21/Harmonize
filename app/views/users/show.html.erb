@@ -1,13 +1,18 @@
-<!-- Temporarily Hard Coded  -->
+
 
 <div class='container'>
 	<div class='row'>
 		<div class='profile_image col-md-6'><%= image_tag "aaron.png" %></div>
 		<div class='col-md-6'>
-			<h1>Aaron Hevenstone</h1>
-			<h3>Main Instrument(s)<br> Drumset, Acoustic Guitar</h3>
-			<h4>Lives In San Francisco, CA</h4>
-			<h4>Email: aaron@gmail.com</h4>
+			<!-- Main Info -->
+			<h1><%= @user.first_name + " " + @user.last_name %></h1>
+			<h3>Main Instrument(s)
+			<% @user.instruments.each do |instrument| %>
+			 <%= instrument.instrument %>
+			 <% end %>
+			</h3>
+			<h4>Lives in <%= @user.city %></h4>
+			<h4>Email: <%= @user.email %></h4>
 		</div>
 		<% if @user.id == session[:user_id] %>
 		<%= link_to "Edit Profile",edit_user_path(@user.id) %>
@@ -15,35 +20,53 @@
 	</div>
 	<div class='row'>
 		<div class='col-md-6'>
+			<!-- Bio -->
 			<h2>Bio</h2>
-			<p>Yo, I'm in a band called <a>Just Whale</a>. We used to play a few gigs around the Bay but lost a few members recently. Hit me up if you want to jam!</p>
+			<p><%= @user.bio %></p>
+			<!-- General Info -->
 			<h2>General Info</h2>
-			<label for="in_band">Aaron is currently in a band</label>
-			<label for="seeking">Seeking rythm guitarist, drummer, bass player</label>
-			<label for="">Main Genres: Rock, Blues, Funk, Open to playing other genres</label>
-			<label for="current_group">Current Band: <a>Just Whale</a></label>
-			<h2>Experience As</h2>
-			<h4>Drummer(6 years)</h4>
-			<label>- Drummer for <a>Just Whale</a> (present)</label>
-			<label>- Drummer for <a>King's Dragon</a> (2 years)</label>
-			<label>- High School Drumline (4 years)</label>
-			<h4>Acoustic Guitar(3 years)</h4>
-			<label for="">- I pretty much just play acoustic guitar by myself but I want to jam with other people</label>
+			<label for="in_band">
+				<% if @user.inband  %>
+				<%= @user.first_name + ' is currently in a band' %>
+				<% else %>
+				<%= @user.first_name + ' is not currently in a band' %>
+				<% end %>
+			</label>
+			<label for="seeking">
+				Seeking
+				<% if @user.seeking %>
+					<% @user.seeking.instruments.each do |instrument| %>
+				 <%= instrument.instrument %>,
+					<% end %>
+				<% end %>
+			</label>
+			<label for="">Main Genres:
+				<% @user.genres.each do |genre| %>
+				<%= genre.genre %>
+				<% end %>
+			</label>
+			<label for="current_group">
+			<% if @user.inband %>
+			Current Band: <%= @user.current_band %>
+			<% end %>
+			</label>
+			<!-- Experience -->
+			<h2>Experience With</h2>
+			<% @user.instruments.each do |instrument| %>
+			<h4><%= instrument.instrument %></h4>
+				<% instrument.experiences.each do |exp| %> 
+					- <%= exp.description %> (<%= exp.length %> years)<br>
+				<% end %>
+			<% end %>
 		</div>
 		<div class='col-md-6'>
+			<!-- Tracks(uploaded or soundcloud) -->
 			<h2>Tracks</h2>
-			<h4 for="">Just Whale</h4>
-			<label for="">Jam at the park</label>
-			<label for="date">2009</label>
-			<audio controls></audio>
-			<h4 for="">Acoustic song</h4>
-			<label for="">Acoustic song a few years ago</label>
-			<label for="date">2007</label>
-			<audio controls></audio>
+			<!-- Links to other pages -->
 			<h2>Other Links</h2>
-			<a href="">Just Whale Myspace</a>
-			<br>
-			<a href="">Rhapsody Page</a>
+			<% @user.links.each do |link| %>
+				<%= link_to link.title, 'http://facebook.com', target: '_blank' %>
+			<% end %>	
 		</div>
 
 
