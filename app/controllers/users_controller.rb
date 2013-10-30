@@ -2,7 +2,33 @@ class UsersController < ApplicationController
 	before_action :signed_in_user, only: [:edit, :update, :destroy]
 
 	def index
-		@users = User.all
+		# render text: params
+		@all_users = User.all
+		@users = Array.new
+		if params[:search]
+			@genre = params[:search][:genre]
+			@instrument = params[:search][:instrument]
+			@all_users.each do |user|
+				user.instruments.each do |i|
+					if i.instrument == params[:search][:instrument]
+						puts user.first_name + ' has ' + params[:search][:instrument] 
+						# render text: 'hello'
+						@users.push(user)
+					else 
+						# render text: 'none'
+					end	
+				end	
+			end	
+			# render text: 'here'
+		else
+			@instrument = 'All Instruments'
+			@genre = 'All Genres'
+			@users = User.all
+		end	
+	end
+
+	def update_search
+		render text: params
 	end
 
 	def show
@@ -84,7 +110,6 @@ class UsersController < ApplicationController
 				end
 	    	end	
 	    	if params[:seeking]
-
 	    		if Seeking.find_by(user_id: @user.id)
 	    			seeking = Seeking.find_by(user_id: @user.id)
 	    		else 

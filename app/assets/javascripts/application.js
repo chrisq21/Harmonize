@@ -36,6 +36,11 @@ function loadInstruments(from) {
 		$('#genres_pop_up').hide();
 		top = 230;
 		left = 320;
+	} else if(from == 'search') {
+		changed_div = '#search_pop_up';
+		drop_down_id = 'search_options';
+		top = 100;
+		left = 220;
 	}
 	else {
 		//ADD GENRE POP UP
@@ -156,7 +161,6 @@ function loadInstruments(from) {
 
 	$(changed_div).html(html);
 	$(changed_div).show();
-
 }
 
 $(document).ready(function() {
@@ -271,11 +275,12 @@ $(document).ready(function() {
 	//Update Options
 
 	$(document).on('click', '.instr_drop_down li a', function(){
+		// alert($(this).text());
 		$('#instruments_pop_up').hide();
 		$('#instruments_label').append(' '+$(this).text());
 		$('#instr_experience').append('<h4>'+$(this).text()+'</h4>');
 		instr_update_counter++;
-		$('#update_form').append('<input value ='+$(this).text()+' type="hidden" name="instruments[]" id="instrument'+instr_update_counter+'">');
+		$('#update_form').append('<input value ="'+$(this).text()+'" type="hidden" name="instruments[]" id="instrument'+instr_update_counter+'">');
 		// $('#instrument'+instr_counter).val($(this).text());
 		// $('#instrument_results').append($(this).text() + " ");
 
@@ -308,6 +313,31 @@ $(document).ready(function() {
 		id = $(this).parent().attr('data-id');
 		$('#exp'+id).append('<input id=exp_val'+exp_counter+' style="display: block;" type="text">');
 		$('#update_form').append('<input type="hidden" name="experience['+instrument+ '][]" id=experience'+exp_counter+' style="display: block;" type="text">');
+	});
+
+	//HOME PAGE SEARCH FIELDS
+
+	$(document).on('click', '#instrument_search', function() {
+		loadInstruments('search');
+	});
+
+	$(document).on('click', '.search_options li a', function(){
+		$('#search_pop_up').hide();
+		$('#instrument_search').text($(this).text());
+		$('#search_instrument_val').val($(this).text());
+		$('#search_form').append('<input type="hidden" value="'+$(this).text()+'" name="instrument">');
+	});
+
+	$('#search_button').click(function(){
+		if($('#search_instrument_val').val() == '') {
+			$('#search_instrument_val').val('All Instruments')
+		}
+
+		if($('#search_genre_val').val() == '') {
+			$('#search_genre_val').val('All Genres')
+		}
+
+		$('#search_form').submit();	
 	});
 });
 

@@ -1,11 +1,19 @@
 <div class='container'>
+	<label for="" style='display: inline-block;'>Find 
+		<a id="instrument_search"><%= @instrument %></a>
+		<a id='genre_search'><%= @genre %></a>
+	</label>
+	<button id='search_button' class='btn btn-primary' style='display: inline-block;'>Go</button>
+	<div id='search_pop_up'></div>
 	<table class='table'>
 		<% @users.each do |user| %>
-			<% user.instruments.each do |instrument| %>
-				<% if instrument.instrument == 'Electric' %>
-					<tr><td><%= user.first_name %></td></tr>
-				<% end %>	
-			<% end %>	
+			<tr><td><%= user.first_name %></td></tr>
 		<% end %>
 	</table>
+	<form id='search_form' action=<%= users_path %> method='get'>
+		<input type="hidden" name='test' value='test'>
+		<input id="search_instrument_val" type="hidden" name='search[instrument]' >
+		<input id='search_genre_val' type="hidden" name='search[genre]' value='<%= @genre %>'>
+		<input type="hidden" name='authenticity_token' value=<%= form_authenticity_token %>>
+	</form>
 </div>

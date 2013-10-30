@@ -1,4 +1,4 @@
 class Seeking < ActiveRecord::Base
-  belongs_to :user, dependent: :destroy
-  has_many :instruments
+  belongs_to :user
+  has_many :instruments, dependent: :destroy
 end
