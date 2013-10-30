@@ -1,30 +1,89 @@
-<div class='container'>
+<div class="space">
+<div id="container_reg" class='container'>
+
+<h3 id="reg_title">Please answer a few questions to register to Harmonize</h3>
 	<% if flash[:notice] %>
 		<% flash[:notice].each do |error| %>
 			<h3 class='errors'><%= error %></h3>
 		<% end %> 	
 	<% end %> 
-	<div class='row'>
-		<div class='col-md-6'>
-	<%= simple_form_for(@user, html: {class: 'register_form' }) do |f| %>
-		<%= f.input :first_name %>
-		<%= f.input :last_name %>
-		<%= f.input :email %>
-		<%= f.input :password %>
-		<%= f.input :confirm_password %>
-		<%= f.input :city, label: "City/Zip Code" %>
-		<%= f.input :age %>
-		<%= f.input :inband, label: "Are You Currently In A Band?", as: :radio_buttons %>
-		<%= f.input :bio, label: "Short Bio", as: :text%>
-		<%= f.button :submit, class: "btn btn-primary"  %>
 
-	<% end %> 
-		</div>
-		<div class='col-md-6'>
-			<div class='row'>
-				<div class='col-md-6'>
+		<div id="new_top">
+
+				<div id="genre" class='genre_options'>
+					<h4>Genres: </h4>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+						<li class="dropdown-submenu">
+							<a tabindex="-1" href="#">Rock</a>
+							<ul class="dropdown-menu">
+								<li><a tabindex="-1" href="#">Metal</a></li>
+								<li class='genre_options'><a href="#">Alternative</a></li>
+								<li class='genre_options'><a href="#">Post Rock</a></li>
+								<li class='genre_options'><a href="#">Classic Rock</a></li>
+								<li class='genre_options'><a href="#">Punk</a></li>
+								<li class='genre_options'><a href="#">Indie</a></li>
+							</ul>
+						</li>
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">Blues</a>	
+						</li>
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">Electronic</a>
+						</li>
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">Country</a>
+						</li>
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">Folk</a>
+						</li>
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">Celtic</a>
+						</li>
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">Soul</a>
+						</li>
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">R&B</a>
+						</li>
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">Hip Hop</a>
+						</li>
+					</ul>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">Funk</a>
+						</li>
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">Rap</a>
+						</li>
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">Pop</a>
+						</li>
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">Covers</a>
+						</li>
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">Reggae</a>
+						</li>
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">Jazz</a>
+						</li>
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">Ska</a>
+						</li>
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">Latin</a>
+						</li>
+						<li class="dropdown-submenu genre_options">
+							<a tabindex="-1" href="#">Bluegrass</a>
+						</li>
+					</ul>
+					<h4 id='genre_results'></h4>
+				</div>
+
+				<div id="main_instr" class='col-md-6'>
 					<div class='instrument_options'>
-						<h3>Main Instruments</h3>
+						<h4>Main Instruments:</h4>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
 							<li class="dropdown-submenu">
 								<a tabindex="-1" href="#">Guitar</a>
@@ -64,9 +123,10 @@
 					</div>
 					<h4 id='instrument_results'></h4>
 				</div>
-				<div class='col-md-6'>
+
+				<div id="seeking" class='col-md-6'>
 					<div class='seeking_options'>
-						<h3>Seeking</h3>
+						<h4>Seeking:</h4>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
 							<li class="dropdown-submenu">
 								<a tabindex="-1" href="#">Guitar</a>
@@ -106,78 +166,32 @@
 						<h4 id='seeking_results'></h4>
 					</div>
 				</div>
-			</div>
 		</div>
 		
-		<div class='genre_options'>
-			<h3>Genres</h3>
-			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
-				<li class="dropdown-submenu">
-					<a tabindex="-1" href="#">Rock</a>
-					<ul class="dropdown-menu">
-						<li><a tabindex="-1" href="#">Metal</a></li>
-						<li class='genre_options'><a href="#">Alternative</a></li>
-						<li class='genre_options'><a href="#">Post Rock</a></li>
-						<li class='genre_options'><a href="#">Classic Rock</a></li>
-						<li class='genre_options'><a href="#">Punk</a></li>
-						<li class='genre_options'><a href="#">Indie</a></li>
-					</ul>
-				</li>
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">Blues</a>	
-				</li>
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">Electronic</a>
-				</li>
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">Country</a>
-				</li>
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">Folk</a>
-				</li>
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">Celtic</a>
-				</li>
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">Soul</a>
-				</li>
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">R&B</a>
-				</li>
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">Hip Hop</a>
-				</li>
-			</ul>
-			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">Funk</a>
-				</li>
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">Rap</a>
-				</li>
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">Pop</a>
-				</li>
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">Covers</a>
-				</li>
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">Reggae</a>
-				</li>
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">Jazz</a>
-				</li>
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">Ska</a>
-				</li>
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">Latin</a>
-				</li>
-				<li class="dropdown-submenu genre_options">
-					<a tabindex="-1" href="#">Bluegrass</a>
-				</li>
-			</ul>
+		<div id="reg_form">
+			<%= simple_form_for(@user, html: {class: 'register_form' }) do |f|  %>
+			<div id="reg_form1">
+			
+				<%= f.input :first_name %>
+				<%= f.input :last_name %>
+				<%= f.input :email %>
+				<%= f.input :password %>
+				<%= f.input :confirm_password %>
+			</div>
+			<div id="reg_form2">
+				<%= f.input :city, label: "City/Zip Code" %>
+				<%= f.input :age %>
+				<%= f.input :inband, label: "Are You Currently In A Band?", as: :radio_buttons %>
+				<%= f.input :bio, label: "Short Bio", as: :text%>
+				<%= f.button :submit, class: "blkbutton"  %>
+			
+			</div>
+			<% end %> 
 		</div>
-		<div id='genre_results'></div>
-	</div>
+
+
+<div id="wires"><%= link_to image_tag("wires.png") %></div>
+</div><!-- end of CONTAINER div -->
 </div>
+
+

@@ -10,8 +10,186 @@
  *
  *= require_self
  *= require_tree .
- *= require bootstrap
  */
 
+* {
+	margin: 0px auto;
+	padding: 0px 0px;
+}
 
- 
+.white {
+	color: white;
+}
+
+.blkbutton {
+	background-color: gray;
+	border-radius: 5px;
+	color: white;
+	border: 1px solid lightgray;
+	padding: 5px 15px;
+}
+
+.margintop {
+	margin-top: 20px;
+}
+
+.center {
+	margin-top: 25px;
+	text-align: center;
+}
+
+#top {
+	height: 61px;
+	width: 100%;
+	background-color: black;
+}
+
+ 	#nav {
+		width: 1000px;
+	}
+
+		#nav ul {
+			float: right;
+		}
+
+			#nav ul li {
+				list-style: none;
+				display: inline-block;
+				padding: 20px 0px 0px 20px;
+			}
+
+.container {
+/*	border: 1px solid green;*/
+	margin-top: 50px;
+}
+
+	#login {
+		margin-top: 50px;
+		width: 220px;
+		height: 160px;
+		padding: 90px 90px;
+		background-image: url(/assets/amp.png);
+	}
+
+	#main {
+/*		background-image: url(/assets/main.png);*/
+		width: 900px;
+		height: 244px;
+		margin-left: 20px;
+		position: absolute;
+	}
+
+		#main > div { 
+		    position: absolute; 
+		    top: 10px; 
+		    left: 10px; 
+		    right: 10px; 
+		    bottom: 10px; 
+		}
+
+		#startbutton {
+			position: absolute;
+			float: right;
+			margin: 180px 0px 0px 770px; 
+		}
+
+		#tabs {
+			margin-top: 244px;
+		}
+
+
+#start {
+	position:  absolute;
+	margin-top: 155px;
+	margin-left: 734px;
+	padding: 37px 65px;
+	color: black;
+	font-weight: bold;
+	font-size: 17px;
+	background-image: url(/assets/start.png);
+	height: 20px;
+	width: 100px;
+}
+
+	#start_link {
+		color: black;
+	}
+
+
+
+
+.space {
+	height: 1000px
+}
+
+#container_reg {
+	background-color: #EAEAE0;
+	width: 800px;
+	height: 850px;
+	padding: 25px 50px;
+	border: 1px solid lightgray;
+/*	border-radius: 20px;*/
+	box-shadow: 10px 10px 10px gray;
+	margin-top: 80px;
+}
+
+#reg_title {
+	text-align: center;
+	color: black;
+}
+
+#new_top {
+	width: 1000px;
+	height: 400px;
+	display: inline;
+	vertical-align: top;
+}
+
+	#genre {
+/*		border: 1px solid red;*/
+		width: 350px;
+		height: 360px;
+		float: left;
+		margin: 0px 30px 0px 20px;
+	}
+
+	#main_instr {
+/*		border: 1px solid blue;*/
+		width: 200px;
+		height: 250px;
+		float: left;
+	}
+
+	#seeking {
+/*		border: 1px solid yellow;*/
+		width: 180px;
+		height: 250px;
+		float: right;
+	}
+
+#reg_form {
+	width: 700px;
+	height: 400px;
+	vertical-align: top;
+	display: inline-block;
+	margin-left: 50px;
+}
+
+	#reg_form1 {
+		width: 400px;
+		height: 400px;
+		float: left;
+	}
+
+	#reg_form2 {
+		width: 220px;
+		height: 400px;
+		float: right;
+	}
+
+	#wires {
+		position: absolute;
+		width: 300px;
+		margin-top: -120px;
+		margin-left: 697px
+	}

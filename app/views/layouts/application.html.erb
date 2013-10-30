@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+  <link rel="shortcut icon" href="http://www.favicongenerator.com/favicon2/h-20131028-favicon.ico">
   <title>Harmonize</title>
-  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-</head>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
 <body>
-	<nav class='navbar navbar-default' role='navigation'>
-		<div class='navbar-header'>
-			<h1><%= link_to 'Harmonize', users_path %></h1>
-		</div>
-		<ul class="nav navbar-nav navbar-right">
-      		<li>
-      			<% if signed_in? %>
-      			<li><%= link_to 'Home',users_path %></li>
-      			<li><%= link_to 'Profile',user_path(session[:user_id]) %></li>
-      			<li><%= link_to 'Logout', destroy_path(session[:user_id]), method: :delete %></li>	
-      			<% else %>
-      			<li><%= link_to 'Home',users_path %></li>
-      			<li><%= link_to 'Login', login_path %></li>	
-            <li><%= link_to 'Sign Up',new_user_path %></li>
-      			<% end %>
-      		</li>
-      		
-    	</ul>
-	</nav>
 
-<%= yield %>
+  <div id="top">
+    <div id="nav">
+      <%= link_to image_tag("banner.png") %>
+      <ul>
+        <% if signed_in? %>
+        <li><%= link_to 'Home',users_path, :class => 'white' %></li>
+        <li><%= link_to 'Profile',user_path(session[:user_id], :class => 'white') %></li>
+        <li><%= link_to 'Logout', destroy_path(session[:user_id]), method: :delete, :class => 'white' %></li>  
+        <% else %>
+        <li><%= link_to 'Home',users_path, :class => 'white' %></li>
+        <li><%= link_to 'Login', login_path, :class => 'white' %></li> 
+        <li><%= link_to 'Sign Up',new_user_path, :class => 'white' %></li>
+        <% end %>
+      </ul>
+    </div><!-- end of NAV div -->
+  </div><!--  end of TOP div -->
+
+  <%= yield %>
 
 </body>
 </html>

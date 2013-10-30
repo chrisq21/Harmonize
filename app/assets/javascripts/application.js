@@ -62,4 +62,14 @@ $(document).ready(function() {
 		$('#genre'+genre_counter).val($(this).text());
 		$('#genre_results').append($(this).text() + " ");
 	});
+
+	$("#main > div:gt(0)").hide();
+	setInterval(function() { 
+	  $('#main > div:first')
+	    .fadeOut(1000)
+	    .next()
+	    .fadeIn(1000)
+	    .end()
+	    .appendTo('#main');
+	},  3000);
 });
