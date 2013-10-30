@@ -4,20 +4,23 @@
 	<div id='top'></div>
 	<div class='row'>
 		<div class='profile_image col-md-6'><%= image_tag "aaron.png" %></div>
-		<div class='col-md-6'>
+		<div class='col-md-8'>
 			<!-- Main Info -->
-
 			<h1><span class='user_info' id='name'><%= @user.first_name + " " + @user.last_name %></span></h1>
-			<h3>Main Instrument(s)
+			<h3 id='instruments_label' style='display: inline-block;'>Main Instrument(s)
 			<% @user.instruments.each do |instrument| %>
 			 <%= instrument.instrument %>
 			 <% end %>
 			</h3>
+			<label for="" id='main_instruments' style='display: inline-block; margin-left: 10px; margin-top: -50px;'></label>
+			<div id='instruments_pop_up' style='z-index:2000;'></div>
+			
 			<h4>Lives in <span class='user_info' id='city'><%= @user.city %></span></h4>
 			<h4>Email: <span class='user_info' id='email'><%= @user.email %></span></h4>
 		</div>
 		<% if @user.id == session[:user_id] %>
 		<a data-remote='true' id='edit_profile'>Edit Profile</a>
+		<a data-remote='true' id='update_profile'>Update Profile</a>
 		<% end %>
 	</div>
 	<div class='row'>
@@ -36,31 +39,39 @@
 				<%= @user.first_name + ' is not currently in a band' %>
 				<% end %>
 			</label>
-			<label for="seeking">
+			<label for="seeking" id='seeking_label'style='display: inline-block' >
 				Seeking
 				<% if @user.seeking %>
 					<% @user.seeking.instruments.each do |instrument| %>
 				 <%= instrument.instrument %>,
 					<% end %>
 				<% end %>
+				<div id='seeking_pop_up' style='z-index:2000;'></div>
 			</label>
-			<label for="">Main Genres:
+			<label for="" id='seeking' style='display: inline-block; margin-left: 10px; margin-top: -50px;'></label>
+			<div></div>
+			<label for="" style='display: inline-block;' id='genres_label'>Main Genres:
 				<% @user.genres.each do |genre| %>
 				<%= genre.genre %>
 				<% end %>
 			</label>
+			<label for="" id='genres' style='display: inline-block; margin-left: 10px; margin-top: -50px;'></label>
+			<div id='genres_pop_up' style='z-index:2000;'></div>
 			<label for="current_group" id='current_band'>
 			<% if @user.inband %>
-			Current Band: <span class='user_info'><%= @user.current_band %></span>
+			Current Band: <label id='current_band_value'><%= @user.current_band %></label>
 			<% end %>
 			</label>
 			<!-- Experience -->
-			<h2>Experience With</h2>
-			<% @user.instruments.each do |instrument| %>
-			<h4><%= instrument.instrument %></h4>
-				<% instrument.experiences.each do |exp| %> 
-					- <%= exp.description %> (<%= exp.length %> years)<br>
-				<% end %>
+			<h2 id='instr_experience'>Experience With</h2>
+			<% @user.instruments.reverse.each do |instrument| %>
+			<h4 style='display: inline-block;'><%= instrument.instrument %></h4>
+				<div style='display: inline-block;' class='experience' data-instr='<%=instrument.instrument %>' data-id=<%= instrument.id %>></div>
+				<div id='exp<%= instrument.id %>'>
+					<% instrument.experiences.each do |exp| %> 
+						- <%= exp.description %> <br>
+					<% end %>
+				</div>
 			<% end %>
 		</div>
 		<div class='col-md-6'>

@@ -50,7 +50,57 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		render text: params
+		# render text: params[:experience].values_at('Piano')
+		name = params[:user][:name].split(' ')
+		first_name = name[0]
+		last_name = name[1]
+		@user = User.find(params[:id])
+		@user[:first_name] = first_name
+		@user[:last_name] = last_name
+	    @user[:email] = params[:user][:email]
+	    @user[:age] = params[:user][:age]
+	    @user[:bio] = params[:user][:bio]
+	    @user[:city] = params[:user][:city]
+	    @user[:inband] = params[:user][:inband]
+	   	@user[:current_band] = params[:user][:current_band]
+	    
+	    if @user.save
+	    	if params[:experience]
+	    		params[:experience].keys.each do |key|
+	    			params[:experience].values_at(key).each do |value|
+	    				value.each do |v|
+	    					e = @user.instruments.find_by(instrument: key).experiences.new(description: v)
+	    					e.save
+	    				end	
+	    			end	
+	    		end	
+	    	end	
+	    	if params[:instruments]
+	    		instruments = Array.new(params[:instruments])
+				instruments.each do |i|
+					new_instrument = @user.instruments.new(instrument: i)
+					new_instrument.save
+				end
+	    	end	
+	    	if params[:seeking]
+	    		seeking = Seeking.find_by(user_id: @user.id)
+				seeking_instruments = Array.new(params[:seeking])
+				seeking_instruments.each do |s|
+					seeking.instruments.new(instrument: s).save
+				end	
+				seeking.save
+			end	
+	    	if params[:genre]
+	    		genres = Array.new(params[:genre])
+				genres.each do |g|
+					new_genre = @user.genres.new(genre: g)
+					new_genre.save
+				end
+	    	end	
+	      redirect_to @user
+	    else 
+	     	render text: 'Failed To Update User'
+	    end  
 	end
 
 	def signed_in_user
