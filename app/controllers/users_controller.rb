@@ -28,11 +28,12 @@ class UsersController < ApplicationController
 					new_genre.save
 				end	
 				seeking = Seeking.new(user_id: @user.id)
+				seeking.save
 				seeking_instruments = Array.new(params[:seeking])
 				seeking_instruments.each do |s|
 					seeking.instruments.new(instrument: s).save
 				end	
-				seeking.save
+				
 	  			sign_in(@user)
 	  			redirect_to user_path(@user[:id])
 	  		else
@@ -83,7 +84,12 @@ class UsersController < ApplicationController
 				end
 	    	end	
 	    	if params[:seeking]
-	    		seeking = Seeking.find_by(user_id: @user.id)
+
+	    		if Seeking.find_by(user_id: @user.id)
+	    			seeking = Seeking.find_by(user_id: @user.id)
+	    		else 
+	    			seeking = Seeking.new(user_id: @user.id)
+	    		end 
 				seeking_instruments = Array.new(params[:seeking])
 				seeking_instruments.each do |s|
 					seeking.instruments.new(instrument: s).save
