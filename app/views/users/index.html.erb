@@ -1,31 +1,31 @@
 <div class='container'>
 <div id="main">
    <div>
-    <%= link_to image_tag("main.png") %>
+    <img src="/assets/main.png" alt="main">
    </div>
    <div>
-    <%= link_to image_tag("1.png") %>
+    <img src="/assets/1.png" alt="1">
    </div>
    <div>
-    <%= link_to image_tag("2.png") %>
+    <img src="/assets/2.png" alt="2">
    </div>
    <div>
-    <%= link_to image_tag("3.png") %>
+    <img src="/assets/3.png" alt="3">
    </div>
    <div>
-    <%= link_to image_tag("4.png") %>
+    <img src="/assets/4.png" alt="4">
    </div>
    <div>
-    <%= link_to image_tag("5.png") %>
+    <img src="/assets/5.png" alt="5">
    </div>
    <div>
-    <%= link_to image_tag("6.png") %>
+    <img src="/assets/6.png" alt="6">
    </div>
     <div>
-    <%= link_to image_tag("7.png") %>
+    <img src="/assets/7.png" alt="7">
    </div>
    <div>
-    <%= link_to image_tag("8.png") %>
+    <img src="/assets/8.png" alt="8">
    </div>
 </div>
 
@@ -36,7 +36,7 @@
 </div>
 <% end %>
 
-
+<div id="home_content">
 	<label for="" style='display: inline-block;'>Find 
 		<a id="instrument_search"><%= @instrument %></a>
 		<a id='genre_search'><%= @genre %></a>
@@ -54,5 +54,6 @@
 		<input id='search_genre_val' type="hidden" name='search[genre]' value='<%= @genre %>'>
 		<input type="hidden" name='authenticity_token' value=<%= form_authenticity_token %>>
 	</form>
+</div>
 
 </div>
