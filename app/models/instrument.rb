@@ -1,4 +1,4 @@
 class Instrument < ActiveRecord::Base
-  belongs_to :user, dependent: :destroy
-  has_many :experiences
+  belongs_to :user
+  has_many :experiences, dependent: :destroy
 end
