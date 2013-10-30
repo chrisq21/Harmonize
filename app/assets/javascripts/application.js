@@ -36,90 +36,107 @@ function loadInstruments(from) {
 		$('#genres_pop_up').hide();
 		top = 230;
 		left = 320;
-	} else if(from == 'search') {
-		changed_div = '#search_pop_up';
-		drop_down_id = 'search_options';
-		top = 100;
-		left = 220;
+	} else if(from == 'instr_search') {
+		changed_div = '#instr_search_pop_up';
+		drop_down_id = 'instr_search_options';
+		top = 380;
+		left = 250;
+	} else if(from == 'genre_search') {
+		changed_div = '#genre_search_pop_up';
+		drop_down_id = 'genre_search_options';
+		top = 420;
+		left = 450;
 	}
 	else {
 		//ADD GENRE POP UP
+		top = 0;
+		left = 460;
 		$('#instruments_pop_up').hide();
 		$('#seeking_pop_up').hide();
 		changed_div = '#genres_pop_up';
 		drop_down_id = 'genres_drop_down';
 	}
-	if(from == 'genres') {
+	if(from == 'genres' || from == 'genre_search') {
 		html ='';
-		html+='<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: inline-block; position: absolute; left: 460px; top: 250px;  margin-bottom: 5px; *width: 180px;">';
-				html+='<li class="dropdown-submenu">';
-					html+='<a tabindex="-1" href="#">Rock</a>';
-					html+='<ul class="dropdown-menu">';
-						html+='<li><a tabindex="-1" href="#">Metal</a></li>';
-						html+='<li class="genres_drop_down"><a href="#">Alternative</a></li>';
-						html+='<li class="genres_drop_down"><a href="#">Post Rock</a></li>';
-						html+='<li class="genres_drop_down"><a href="#">Classic Rock</a></li>';
-						html+='<li class="genres_drop_down"><a href="#">Punk</a></li>';
-						html+='<li class="genres_drop_down"><a href="#">Indie</a></li>';
-					html+='</ul>';
+		html+='<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: inline-block; position: absolute; left: '+left+'px; top: '+top+'px;  margin-bottom: 5px; *width: 180px;">';
+			html+='<li class="dropdown-submenu '+drop_down_id+'">';
+				html+='<a tabindex="-1" href="#">Rock</a>';
+				html+='<ul class="dropdown-menu">';
+					html+='<li><a tabindex="-1" href="#">Metal</a></li>';
+					html+='<li class="genres_drop_down"><a href="#">Alternative</a></li>';
+					html+='<li class="genres_drop_down"><a href="#">Post Rock</a></li>';
+					html+='<li class="genres_drop_down"><a href="#">Classic Rock</a></li>';
+					html+='<li class="genres_drop_down"><a href="#">Punk</a></li>';
+					html+='<li class="genres_drop_down"><a href="#">Indie</a></li>';
+				html+='</ul>';
 				html+='</li>';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">Blues</a>	';
 				html+='</li>';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">Electronic</a>';
 				html+='</li>';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">Country</a>';
 				html+='</li>';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">Folk</a>';
 				html+='</li>';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">Celtic</a>';
 				html+='</li>';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">Soul</a>';
 				html+='</li>';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">R&B</a>';
 				html+='</li>';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">Hip Hop</a>';
 				html+='</li>';
 			html+='</ul>';
-			html+='<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: inline-block; position: absolute; left: 300px; top: 250px; margin-bottom: 5px; *width: 180px;">';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+			html+='<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: inline-block; position: absolute; left: '+(left - 160) +'px; top: '+top+'px; margin-bottom: 5px; *width: 180px;">';
+				if(from == 'genre_search') {
+					html+='<li class="dropdown-submenu '+drop_down_id+'">';
+						html+='<a tabindex="-1" href="#">Any Genre</a>	';
+					html+='</li>';
+				}
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">Funk</a>';
 				html+='</li>';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">Rap</a>';
 				html+='</li>';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">Pop</a>';
 				html+='</li>';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">Covers</a>';
 				html+='</li>';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">Reggae</a>';
 				html+='</li>';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">Jazz</a>';
 				html+='</li>';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">Ska</a>';
 				html+='</li>';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">Latin</a>';
 				html+='</li>';
-				html+='<li class="dropdown-submenu genres_drop_down">';
+				html+='<li class="dropdown-submenu '+drop_down_id+'">';
 					html+='<a tabindex="-1" href="#">Bluegrass</a>';
 				html+='</li>';
 			html+='</ul>';
 	} else {
 		html = '';
 		html+='<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: inline; position: absolute; top: '+top+'px; left: '+left+'px; margin-bottom: 5px; *width: 180px; z-index: 2000">';
+			if(from == 'instr_search') {
+				html +='<li class="dropdown-submenu">';
+					html += '<li><a id="any_instr" tabindex="-1" href="#">All Musicians</a></li>';
+				html +='</li>';
+			}
 			html += '<li class="dropdown-submenu">';
 				html += '<a tabindex="-1" href="#">Guitar</a>';
 				html += '<ul class="dropdown-menu '+drop_down_id+'">';
@@ -164,6 +181,7 @@ function loadInstruments(from) {
 }
 
 $(document).ready(function() {
+	
 	var instr_counter = 0;
 	var genre_counter = 0;
 	var seeking_counter = 0;
@@ -328,27 +346,38 @@ $(document).ready(function() {
 
 	//HOME PAGE SEARCH FIELDS
 
-	$(document).on('click', '#instrument_search', function() {
-		loadInstruments('search');
+	$('#instrument_search').click(function() {
+		loadInstruments('instr_search');
+		$('#genre_search_pop_up').hide();
 	});
 
-	$(document).on('click', '.search_options li a', function(){
-		$('#search_pop_up').hide();
+	$('#genre_search').click(function() {
+		loadInstruments('genre_search');
+		$('#instr_search_pop_up').hide();
+	});
+
+	$(document).on('click', '.instr_search_options li a', function(){
+		$('#instr_search_pop_up').hide();
 		$('#instrument_search').text($(this).text());
-		$('#search_instrument_val').val($(this).text());
-		$('#search_form').append('<input type="hidden" value="'+$(this).text()+'" name="instrument">');
+	});
+
+	//Any Instrument link
+	$(document).on('click', '#any_instr', function(){
+		$('#instr_search_pop_up').hide();
+		$('#instrument_search').text($(this).text());
+	});
+
+
+	$(document).on('click', '.genre_search_options a', function(){
+		$('#genre_search_pop_up').hide();
+		$('#genre_search').text($(this).text());
 	});
 
 	$('#search_button').click(function(){
-		if($('#search_instrument_val').val() == '') {
-			$('#search_instrument_val').val('All Instruments')
-		}
+		$('#search_instrument_val').val($('#instrument_search').text());
+		$('#search_genre_val').val($('#genre_search').text());
 
-		if($('#search_genre_val').val() == '') {
-			$('#search_genre_val').val('All Genres')
-		}
-
-		$('#search_form').submit();	
+		$('#search_form').submit();
 	});
 });
 

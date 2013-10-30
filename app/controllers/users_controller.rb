@@ -5,24 +5,49 @@ class UsersController < ApplicationController
 		# render text: params
 		@all_users = User.all
 		@users = Array.new
+
 		if params[:search]
 			@genre = params[:search][:genre]
 			@instrument = params[:search][:instrument]
-			@all_users.each do |user|
-				user.instruments.each do |i|
-					if i.instrument == params[:search][:instrument]
-						puts user.first_name + ' has ' + params[:search][:instrument] 
-						# render text: 'hello'
-						@users.push(user)
-					else 
-						# render text: 'none'
+			if @genre == 'Any Genre' && @instrument == 'All Musicians'
+				@users = @all_users
+			elsif @instrument == 'All Musicians'
+				# # Get All Instruments by specific genre
+				@all_users.each do |user|
+					user.genres.each do |g|
+						if g.genre == params[:search][:genre]
+							# puts user.first_name + ' has ' + params[:search][:instrument] 
+							@users.push(user)
+						end
 					end	
 				end	
+			elsif @genre == 'Any Genre'
+				# Get All Genres by specific Instrument
+				@all_users.each do |user|
+					user.instruments.each do |i|
+						if i.instrument == params[:search][:instrument]
+							puts user.first_name + ' has ' + params[:search][:instrument] 
+							# render text: 'hello'
+							@users.push(user)
+						end	
+					end	
+				end		
+			else 
+				@all_users.each do |user|
+					user.genres.each do |g|
+						if g.genre == params[:search][:genre] 
+							user.instruments.each do |i|
+								if i.instrument == params[:search][:instrument]
+									@users.push(user)
+								end	
+							end	
+						end
+					end	
+				end		
 			end	
-			# render text: 'here'
 		else
-			@instrument = 'All Instruments'
-			@genre = 'All Genres'
+			@instrument = 'All Musicians'
+			@genre = 'Any Genre'
 			@users = User.all
 		end	
 	end
