@@ -18,7 +18,12 @@
       <ul>
         <% if signed_in? %>
 
-ENTER MESSAGES IF STATEMENT HERE
+          <% user=User.find(session[:user_id]) %>
+          <% if user %>
+             <li><a href="#"> <img id="mail" src="/assets/mail_some.png" alt="mail"> </a></li>
+          <% else %> 
+             <li><a href="#"> <img id="mail" src="/assets/mail_none.png" alt="mail"> </a></li>
+          <% end %>
 
         <li><%= link_to 'Home',users_path, :class => 'white' %></li>
         <li><%= link_to 'Profile',user_path(session[:user_id], :class => 'white') %></li>
