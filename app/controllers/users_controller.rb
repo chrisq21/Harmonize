@@ -106,9 +106,21 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
+	def messages
+		user = User.find(session[:user_id])
+		@messages = user.messages
+	end
+
+	def new_message
+		message = Message.new
+		message.from_id = session[:user_id]
+		message.user_id = params[:message_to]
+		message.description = params[:description]
+		message.save
+		redirect_to User.find(params[:message_to])
+	end
+
 	def create	
-		# render text: params[:user][:zip]
-		# render text: params[:user][:zip].to_region(:city => true)
 		if params[:user][:confirm_password] == params[:user][:password]
 			@user = User.new(user_params)	
 			@user.zip.to_s.to_region(city: true)
@@ -148,7 +160,6 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		# render text: params[:experience].values_at('Piano')
 		name = params[:user][:name].split(' ')
 		first_name = name[0]
 		last_name = name[1]
@@ -198,7 +209,17 @@ class UsersController < ApplicationController
 					new_genre = @user.genres.new(genre: g)
 					new_genre.save
 				end
-	    	end	
+	    	end
+	    	if params[:link]
+	    		links = params[:link]
+	    		link_count = links.count	
+	    		for i in 0..link_count
+	    			Link.new(linkable_id: @user.id, linkable_type: 'User', title: links[:title][i], url: links[:url][i]).save
+	    		end	
+	    		Link.last.destroy
+	    	end
+	    	
+
 	      redirect_to @user
 	    else 
 	     	render text: 'Failed To Update User'
@@ -210,7 +231,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :age, :zip, :bio, :inband)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :profile_image, :age, :zip, :bio, :inband)
   end
 end
 	

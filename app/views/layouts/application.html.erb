@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
 <body>
 
   <div id="top">
@@ -19,10 +20,10 @@
         <% if signed_in? %>
 
           <% user=User.find(session[:user_id]) %>
-          <% if user %>
-             <li><a href="#"> <img id="mail" src="/assets/mail_some.png" alt="mail"> </a></li>
-          <% else %> 
-             <li><a href="#"> <img id="mail" src="/assets/mail_none.png" alt="mail"> </a></li>
+          <% if user.messages.any? %>
+             <li><a href="../users/messages"> <img id="mail" src="/assets/mail_some.png" alt="mail"> </a></li>
+          <% else %>
+             <li><a href="../users/messages"> <img id="mail" src="/assets/mail_none.png" alt="mail"> </a></li>
           <% end %>
 
         <li><%= link_to 'Home',users_path, :class => 'white' %></li>

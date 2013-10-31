@@ -53,8 +53,19 @@
 <div>
   <table id="home_table" class='table'>
 		<% @users.each do |user| %>
+
 			<tr><td><%= link_to user.first_name + " " + user.last_name, user %></td></tr>
 		<% end %>
+
+			<tr><td><%= link_to user.first_name + " " + user.last_name, user %><br>
+        <% if user.profile_image_url.to_s != '' %>
+        <%= image_tag user.profile_image_url, class: 'thumbnail'%> <%= user.city %>
+        <% else %>
+        <%= image_tag 'profile_placeholder.png', class: 'thumbnail'%> <%= user.city %>
+        <% end %>
+      </td></tr>
+      <% end %>
+
 	</table>
 	<form id='search_form' action=<%= users_path %> method='get'>
 		<input type="hidden" name='test' value='test'>

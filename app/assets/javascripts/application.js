@@ -28,7 +28,7 @@ function loadInstruments(from) {
 		drop_down_id = 'instr_drop_down';
 		$('#genres_pop_up').hide();
 		$('#seeking_pop_up').hide();
-		top = 120;
+		top = 520;
 		left = 500;
 	}
 	else if(from == 'seeking') {
@@ -196,6 +196,7 @@ $(document).ready(function() {
 	var genre_update_counter = 0;
 	var seeking_update_counter = 0;
 	var exp_counter = 0;
+	var link_counter = 0;
 	$('#update_profile').hide();
 	$('#city_field').hide();
 
@@ -212,9 +213,10 @@ $(document).ready(function() {
 		$('#city').html('<input id="city_val" type="text" value="'+city+'"">');
 		$('#email').html('<input id="email_val" type="text" value="'+email+'"">');
 		$('#bio').html('<textarea id="bio_val" type="text">'+bio+'</textarea>');
-		$('#main_instruments').append('<a data-remote = true id="add_instrument">+ Add An Instrument</a>');
-		$('#seeking').append('<a data-remote = true id="add_seeking">+ Add An Instrument</a>');
-		$('#genres').append('<a data-remote = true id="add_genre">+ Add A Genre</a>');
+		$('#main_instruments').append('<a data-remote = true id="add_instrument"> + Add An Instrument</a>');
+		$('#seeking').append('<a data-remote = true id="add_seeking"> + Add An Instrument</a>');
+		$('#genres').append('<a data-remote = true id="add_genre"> + Add A Genre</a>');
+		$('#links').append('<a data-remote = true id="add_link"> + Add A Link</a>');
 		$('.experience').append('<a data-remote=true class="add_experience">+ Add Experience </a>');
 		//Set the default value of the radio buttons depending on the user value
 		if(inband == 'true')
@@ -228,7 +230,7 @@ $(document).ready(function() {
 		html += "</form>";
 		$('#bottom').html(html);
 	});
-
+	//Edit Profile Links
 	$(document).on('click', '#add_instrument', function() {
 		loadInstruments('instruments');
 	});	
@@ -239,6 +241,15 @@ $(document).ready(function() {
 
 	$(document).on('click', '#add_genre', function() {
 		loadInstruments('genres');
+	});	
+
+	$(document).on('click', '#add_link', function() {
+		link_counter++;
+		$("#profile_bottom").append('<br>');
+		$("#profile_bottom").append('<input type="text" id="title_val'+link_counter+'" placeholder="Link Description">');
+		$("#profile_bottom").append('<input type="text" id="link_val'+link_counter+'" placeholder="URL">');
+		$('#update_form').append('<input type="hidden" name="link[title][]" id="title'+link_counter+'">');
+		$('#update_form').append('<input type="hidden" name="link[url][]" id="link'+link_counter+'">');
 	});	
 
 	$(document).on('click', '#update_profile', function() {
@@ -269,7 +280,11 @@ $(document).ready(function() {
 		for(var i = 1; i <= exp_counter; i++) {
 			$('#experience'+i).val($('#exp_val'+i).val());
 		}
-		
+
+		for(var i = 1; i <= link_counter; i++) {
+			$('#link'+i).val($('#link_val'+i).val());
+			$('#title'+i).val($('#title_val'+i).val());
+		}
 		
 		//Create A Hidden Form to be submitted 		
 		$('#update_form').submit();
@@ -397,14 +412,20 @@ $(document).ready(function() {
 		$('#search_form').submit();
 	});
 
+	$('.reply').click(function() {
+		$('#message_to').val($(this).siblings('.message_to_val').val());
+		$('#label').text($(this).siblings('.label_val').val());
+		// $('#message_to_val').val() + " " + $('#label_val').val()
+	});	
+
 	$("#search_button").mouseenter(function(){
 		$("button").css("color","black");
 		$("button").css("background-color","gray");
-	})
+	});
 
 	$("#search_button").mouseleave(function(){
 		$("button").css("color","white");
 		$("button").css("background-color","black");
-	})
+	});
 });
 
