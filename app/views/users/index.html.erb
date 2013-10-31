@@ -39,19 +39,21 @@
 <div id="home_content">
 	<label for="" style='display: inline-block;'>Find 
 		<a id="instrument_search"><%= @instrument %></a>
+		Who Play 
 		<a id='genre_search'><%= @genre %></a>
 	</label>
 	<button id='search_button' class='btn btn-primary' style='display: inline-block;'>Go</button>
-	<div id='search_pop_up'></div>
+	<div id='instr_search_pop_up'></div>
+	<div id='genre_search_pop_up'></div>
 	<table class='table'>
 		<% @users.each do |user| %>
-			<tr><td><%= user.first_name %></td></tr>
+			<tr><td><%= link_to user.first_name + " " + user.last_name, user %></td></tr>
 		<% end %>
 	</table>
 	<form id='search_form' action=<%= users_path %> method='get'>
 		<input type="hidden" name='test' value='test'>
 		<input id="search_instrument_val" type="hidden" name='search[instrument]' >
-		<input id='search_genre_val' type="hidden" name='search[genre]' value='<%= @genre %>'>
+		<input id='search_genre_val' type="hidden" name='search[genre]'>
 		<input type="hidden" name='authenticity_token' value=<%= form_authenticity_token %>>
 	</form>
 </div>
