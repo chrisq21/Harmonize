@@ -14,11 +14,11 @@
 
   <div id="top">
     <div id="nav">
-      <img src="/assets/banner.png" alt="banner">
+      <a href="/users"> <img src="/assets/banner.png" alt="banner"> </a>
       <ul>
         <% if signed_in? %>
 
-
+ENTER MESSAGES IF STATEMENT HERE
 
         <li><%= link_to 'Home',users_path, :class => 'white' %></li>
         <li><%= link_to 'Profile',user_path(session[:user_id], :class => 'white') %></li>
