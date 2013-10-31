@@ -1,4 +1,4 @@
-	
+
 class UsersController < ApplicationController
 	before_action :signed_in_user, only: [:edit, :update, :destroy]
 
@@ -109,6 +109,15 @@ class UsersController < ApplicationController
 	def messages
 		user = User.find(session[:user_id])
 		@messages = user.messages
+	end
+
+	def new_message
+		message = Message.new
+		message.from_id = session[:user_id]
+		message.user_id = params[:message_to]
+		message.description = params[:description]
+		message.save
+		redirect_to User.find(params[:message_to])
 	end
 
 	def create	

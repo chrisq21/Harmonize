@@ -406,5 +406,12 @@ $(document).ready(function() {
 		$('#search_city_val').val($('#city_field').val());		
 		$('#search_form').submit();
 	});
+
+	$('.reply').click(function() {
+		alert($(this).siblings('.label_val').val() + ' ' + $(this).siblings('.message_to_val').val());
+		$('#message_to').val($(this).siblings('.message_to_val').val());
+		$('#label').text($(this).siblings('.label_val').val());
+		// $('#message_to_val').val() + " " + $('#label_val').val()
+	});	
 });
 

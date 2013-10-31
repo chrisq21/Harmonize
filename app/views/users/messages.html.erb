@@ -1,9 +1,35 @@
 <div class='container'>
   <h1>My Messages</h1>
   <table class='table'>
-    <% @messages.each do |message| %>
-      <tr><td><%= link_to User.find(message.from_id).first_name + ' ' + User.find(message.from_id).last_name, User.find(message.from_id) %><br><span style='margin-left: 20px;'></span><%= message.description %></td><td></td><td><input type="button" class='btn btn-primary' value='Reply'></td></tr>
+    <% @messages.reverse.each do |message| %>
+      <% user = User.find(message.from_id) %>
+      <tr><td><%= link_to user.first_name + ' ' + user.last_name, user %><br><span style='margin-left: 20px;'></span><%= message.description %></td><td></td>
+        <td><input  type="button" class='btn btn-primary reply' data-toggle="modal" data-target="#myModal" value='Reply To <%= user.first_name %>'>
+          <input type="hidden" class='message_to_val' value= <%= user.id %>>
+          <input type="hidden" class='label_val' value= "Send <%= user.first_name %> A Message">
+        </td></tr>
     <% end %>
   </table>
- </div> 
 
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="label">Send A Message</h4>
+          </div>
+          <form action="<%= new_message_path %>" method='post' id='message_form'>
+            <div class="modal-body">
+            <textarea name="description" form='message_form' cols="200" rows="3" ></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <input type="hidden" name='message_to' id='message_to' >
+              <input type="hidden" name='authenticity_token' id='token' value=<%=form_authenticity_token %>>
+              <input type="submit" class="btn btn-primary" value='Send'>
+            </div>
+          </form>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>

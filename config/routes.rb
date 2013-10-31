@@ -2,6 +2,7 @@ Harmonize::Application.routes.draw do
   root "users#index"
   post "users/update_search", to: "users#update_search"
   get "users/messages", to: "users#messages", as: :messages
+  post "users/messages", to: "users#new_message", as: :new_message
   get "login", to: "sessions#new", as: :login
   resources :users, except: :update
   post "users/:id", to: "users#update"
