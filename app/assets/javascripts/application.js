@@ -20,8 +20,9 @@ function loadInstruments(from) {
 	changed_div = '';
 	drop_down_id = '';
 	var top = 0;
-	var left = 0;
+	var left = 0
 
+//drop downs on profile page
 	if(from =='instruments') {
 		changed_div = '#instruments_pop_up';
 		drop_down_id = 'instr_drop_down';
@@ -37,6 +38,8 @@ function loadInstruments(from) {
 		$('#genres_pop_up').hide();
 		top = 230;
 		left = 320;
+
+//drop down on home page		
 	} else if(from == 'instr_search') {
 		changed_div = '#instr_search_pop_up';
 		drop_down_id = 'instr_search_options';
@@ -48,6 +51,8 @@ function loadInstruments(from) {
 		top = 420;
 		left = 450;
 	}
+
+//drop down for profile genre	
 	else {
 		//ADD GENRE POP UP
 		top = 0;
@@ -391,5 +396,15 @@ $(document).ready(function() {
 		$('#search_city_val').val($('#city_field').val());		
 		$('#search_form').submit();
 	});
+
+	$("#search_button").mouseenter(function(){
+		$("button").css("color","black");
+		$("button").css("background-color","gray");
+	})
+
+	$("#search_button").mouseleave(function(){
+		$("button").css("color","white");
+		$("button").css("background-color","black");
+	})
 });
 

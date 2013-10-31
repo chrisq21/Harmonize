@@ -36,21 +36,24 @@
 </div>
 <% end %>
 
-<div id="home_content">
-	<label for="" style='display: inline-block;'>Find 
-		<a id="instrument_search"><%= @instrument %></a>
-		Who Play 
-		<a id='genre_search'><%= @genre %></a>
-		in 
-		<a id='city_search'><%= @city %></a>
+<div id="search_bar">
+	<label for="" style='display: inline-block;'>.
+    <span class="white big">Find</span> 
+		<a id="instrument_search" class="underline big gray"><%= @instrument %></a>
+		<span class="white big">Who Play </span> 
+		<a id='genre_search' class="underline big gray"><%= @genre %></a>
+		<span class="white big">in </span> 
+		<a id='city_search' class="underline big gray"><%= @city %></a>
 	</label>
 	<input type="text" placeholder='Enter City' id='city_field' style='z-index:100; position: absolute; left: 400px;' > 
-	<button id='search_button' class='btn btn-primary' style='display: inline-block;'>Go</button>
+	<button id='search_button' class='white' style='display: inline-block;'>Search</button>
 	<div id='instr_search_pop_up'></div>
 	<div id='genre_search_pop_up'></div>
-	<table class='table'>
+</div>	
+<div>
+  <table id="home_table" class='table'>
 		<% @users.each do |user| %>
-			<tr><td><%= link_to user.first_name + " " + user.last_name, user %></td></tr>
+			<tr><td><%= link_to user.first_name + " " + user.last_name, user %></td><td><%= user.city %></td><td><%= user.instruments.each %></td></tr>
 		<% end %>
 	</table>
 	<form id='search_form' action=<%= users_path %> method='get'>
