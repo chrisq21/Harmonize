@@ -148,7 +148,6 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		# render text: params[:experience].values_at('Piano')
 		name = params[:user][:name].split(' ')
 		first_name = name[0]
 		last_name = name[1]
@@ -198,7 +197,17 @@ class UsersController < ApplicationController
 					new_genre = @user.genres.new(genre: g)
 					new_genre.save
 				end
-	    	end	
+	    	end
+	    	if params[:link]
+	    		links = params[:link]
+	    		link_count = links.count	
+	    		for i in 0..link_count
+	    			Link.new(linkable_id: @user.id, linkable_type: 'User', title: links[:title][i], url: links[:url][i]).save
+	    		end	
+	    		Link.last.destroy
+	    	end
+	    	
+
 	      redirect_to @user
 	    else 
 	     	render text: 'Failed To Update User'

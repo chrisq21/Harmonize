@@ -102,16 +102,17 @@
 
 	<input id='user_id' type="hidden" value=<%= @user.id %>>
 	<input type="hidden" name='authenticity_token' id='token' value=<%=form_authenticity_token %>>
-	
+	<div id='profile_bottom'>
+		<!-- Links to other pages -->
+		<h4 style='display:inline-block;'>Other Links</h4>
+		<label for="links" id='links' style='display:inline-block;'></label>
+		<% @user.links.each do |link| %>
+			<br>
+			<%= link_to link.title, link.url, target: '_blank' %>
+		<% end %>	
+	</div>
 	<div id='bottom'>
-		<div id='profile_bottom'>
-
-			<!-- Links to other pages -->
-			<h4>Other Links</h4>
-			<% @user.links.each do |link| %>
-				<%= link_to link.title, 'http://facebook.com', target: '_blank' %>
-			<% end %>	
-		</div>
+		
 	</div>		
 </div><!-- end of CONTAINER div -->
 </div><!-- end of SPACE div -->
