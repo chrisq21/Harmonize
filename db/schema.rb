@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131030233122) do
+ActiveRecord::Schema.define(version: 20131031042800) do
 
   create_table "experiences", force: true do |t|
     t.integer  "instrument_id"
@@ -53,6 +53,17 @@ ActiveRecord::Schema.define(version: 20131030233122) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "messages", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "from_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
   create_table "seekings", force: true do |t|
     t.integer  "user_id"

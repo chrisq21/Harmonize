@@ -33,15 +33,19 @@ class UsersController < ApplicationController
 		if @genre == 'Any Genre' && @instrument == 'All Musicians' && @city == 'All Cities'
 			@users = @all_users
 		elsif @instrument == 'All Musicians' && @city == 'All Cities'
-			user.genres.each do |g|
-				if g.genre == params[:search][:genre]	
-					@users.push(user)
-				end
+			@all_users.each do |user|
+				user.genres.each do |g|
+					if g.genre == params[:search][:genre]	
+						@users.push(user)
+					end
+				end	
 			end	
 		elsif @genre == 'Any Genre' && @city == 'All Cities'
-			user.instruments.each do |i|
-				if i.instrument == params[:search][:instrument]	
-					@users.push(user)
+			@all_users.each do |user|
+				user.instruments.each do |i|
+					if i.instrument == params[:search][:instrument]	
+						@users.push(user)
+					end	
 				end	
 			end		
 		elsif @instrument == 'All Musicians' && @genre == 'Any Genre'

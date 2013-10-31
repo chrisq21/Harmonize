@@ -349,18 +349,22 @@ $(document).ready(function() {
 	//HOME PAGE SEARCH FIELDS
 
 	$('#instrument_search').click(function() {
+		$('#city_field').hide();
 		loadInstruments('instr_search');
 		$('#genre_search_pop_up').hide();
 	});
 
 	$('#genre_search').click(function() {
+		$('#city_field').hide();
 		loadInstruments('genre_search');
 		$('#instr_search_pop_up').hide();
 	});
 
 	$('#city_search').click(function() {
-		$('#city_search').html('<input type="text" placeholder="Enter A City...">');
-		$(this).attr('id', 'city_text_field');
+		$('#genre_search_pop_up').hide();
+		$('#instr_search_pop_up').hide();
+		$('#city_field').show();
+		
 	});
 
 	$(document).on('click', '.instr_search_options li a', function(){
@@ -370,6 +374,7 @@ $(document).ready(function() {
 
 	//Any Instrument link
 	$(document).on('click', '#any_instr', function(){
+		$('#city_field').hide();
 		$('#instr_search_pop_up').hide();
 		$('#instrument_search').text($(this).text());
 	});
@@ -383,7 +388,7 @@ $(document).ready(function() {
 	$('#search_button').click(function(){
 		$('#search_instrument_val').val($('#instrument_search').text());
 		$('#search_genre_val').val($('#genre_search').text());
-		$('#search_city_val').val($('#city_text_field input').val());		
+		$('#search_city_val').val($('#city_field').val());		
 		$('#search_form').submit();
 	});
 });
