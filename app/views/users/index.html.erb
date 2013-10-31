@@ -45,16 +45,15 @@
 		<span class="white big">in </span> 
 		<a id='city_search' class="underline big gray"><%= @city %></a>
 	</label>
-	<input type="text" placeholder='Enter City' id='city_field' style='z-index:100; position: absolute; left: 400px;' > 
+	<input type="text" placeholder='Enter City' id='city_field' style='z-index:100' > 
 	<button id='search_button' class='white' style='display: inline-block;'>Search</button>
-	<div id='instr_search_pop_up'></div>
-	<div id='genre_search_pop_up'></div>
+	<div id='instr_search_pop_up' class="relative"></div>
+	<div id='genre_search_pop_up' class="relative"></div>
 </div>	
 <div>
   <table id="home_table" class='table'>
     <tr><th>Info</th><th>Instrument(s) Played</th><th>Genres</th><th>Seeking</th></tr>
 		<% @users.each do |user| %>
-
 			<tr><td><%= link_to user.first_name + " " + user.last_name, user, class: 'bold'%><br>
         <% if user.profile_image_url.to_s != '' %>
         <%= image_tag user.profile_image_url, class: 'thumbnail'%> <br> <br><br>  <%= user.city %>
@@ -67,6 +66,7 @@
       <td><%= user.seeking.instruments.pluck(:instrument).join(', ') %></td></tr>
       </tr>
       <% end %>
+
 	</table>
 	<form id='search_form' action=<%= users_path %> method='get'>
 		<input type="hidden" name='test' value='test'>
