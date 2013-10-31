@@ -3,8 +3,8 @@
 <div class='container'>
 	<div id="login">
 		<%= simple_form_for @user, url: sessions_path, html: {class: 'form-horizontal margintop white'} do |form_field| %>
-			<%= form_field.input :email, label: 'Email', class: "margintop" %>
-			<%= form_field.input :password, label: 'Password', class: "margintop" %>
+			<%= form_field.input :email, label: 'Email'%>
+			<%= form_field.input :password, label: 'Password' %>
 			<%= form_field.button :submit, value:'Log In', class: "blkbutton margintop" %>
 		<% end %>
 

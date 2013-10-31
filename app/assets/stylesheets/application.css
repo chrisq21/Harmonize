@@ -16,6 +16,15 @@
 * {
 	margin: 0px auto;
 	padding: 0px 0px;
+/*	color: black;*/
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
 }
 
 .white {
@@ -37,6 +46,10 @@
 .center {
 	margin-top: 25px;
 	text-align: center;
+}
+
+.space {
+	height: 900px
 }
 
 #top {
@@ -64,133 +77,118 @@
 	margin-top: 50px;
 }
 
-	#login {
-		margin-top: 50px;
-		width: 220px;
-		height: 160px;
-		padding: 90px 90px;
-		background-image: url(/assets/amp.png);
-	}
-
-	#main {
-/*		background-image: url(/assets/main.png);*/
-		width: 900px;
-		height: 244px;
-		margin-left: 20px;
-		position: absolute;
-	}
-
-		#main > div { 
-		    position: absolute; 
-		    top: 10px; 
-		    left: 10px; 
-		    right: 10px; 
-		    bottom: 10px; 
-		}
-
-		#startbutton {
-			position: absolute;
-			float: right;
-			margin: 180px 0px 0px 770px; 
-		}
-
-		#tabs {
-			margin-top: 244px;
-		}
 
 
-#start {
-	position:  absolute;
-	margin-top: 155px;
-	margin-left: 734px;
-	padding: 37px 65px;
-	color: black;
-	font-weight: bold;
-	font-size: 17px;
-	background-image: url(/assets/start.png);
-	height: 20px;
-	width: 100px;
+/*HOME PAGE*/
+#login {
+	margin-top: 50px;
+	width: 220px;
+	height: 160px;
+	padding: 90px 90px;
+	background-image: url(/assets/amp.png);
 }
 
-	#start_link {
-		color: black;
+#main {
+	width: 900px;
+	height: 244px;
+	margin-left: 20px;
+	position: absolute;
+}
+
+	#main > div { 
+	    position: absolute; 
+	    top: 10px; 
+	    left: 10px; 
+	    right: 10px; 
+	    bottom: 10px; 
 	}
+
+	#start {
+		position:  absolute;
+		margin-top: 155px;
+		margin-left: 734px;
+		padding: 37px 65px;
+		color: black;
+		font-weight: bold;
+		font-size: 17px;
+		background-image: url(/assets/start.png);
+		height: 20px;
+		width: 100px;
+	}
+
+		#start_link {
+			color: black;
+		}
 
 #home_content {
 	margin-top: 250px;
 }
 
 
-
-
-.space {
-	height: 1000px
-}
-
+/*REGISTRATION PAGE*/
 #container_reg {
 	background-color: #EAEAE0;
 	width: 800px;
 	height: 850px;
 	padding: 25px 50px;
 	border: 1px solid lightgray;
-/*	border-radius: 20px;*/
 	box-shadow: 10px 10px 10px gray;
 	margin-top: 80px;
 }
 
-#reg_title {
-	text-align: center;
-	color: black;
-}
-
-#new_top {
-	width: 1000px;
-	height: 400px;
-	display: inline;
-	vertical-align: top;
-}
-
-	#genre {
-/*		border: 1px solid red;*/
-		width: 350px;
-		height: 360px;
-		float: left;
-		margin: 0px 30px 0px 20px;
+	#reg_title {
+		text-align: center;
+		color: black;
 	}
 
-	#main_instr {
-/*		border: 1px solid blue;*/
-		width: 200px;
-		height: 250px;
-		float: left;
-	}
-
-	#seeking {
-/*		border: 1px solid yellow;*/
-		width: 180px;
-		height: 250px;
-		float: right;
-	}
-
-#reg_form {
-	width: 700px;
-	height: 400px;
-	vertical-align: top;
-	display: inline-block;
-	margin-left: 50px;
-}
-
-	#reg_form1 {
-		width: 400px;
+	#new_top {
+		width: 1000px;
 		height: 400px;
-		float: left;
+		display: inline;
+		vertical-align: top;
 	}
 
-	#reg_form2 {
-		width: 220px;
+		#genre {
+	/*		border: 1px solid red;*/
+			width: 350px;
+			height: 360px;
+			float: left;
+			margin: 0px 30px 0px 20px;
+		}
+
+		#main_instr {
+	/*		border: 1px solid blue;*/
+			width: 200px;
+			height: 250px;
+			float: left;
+		}
+
+		#seeker {
+	/*		border: 1px solid yellow;*/
+			width: 180px;
+			height: 250px;
+			float: right;
+		}
+
+	#reg_form {
+		width: 700px;
 		height: 400px;
-		float: right;
+		vertical-align: top;
+		display: inline-block;
+		margin-left: 50px;
 	}
+
+		#reg_form1 {
+			width: 400px;
+			height: 400px;
+			float: left;
+		}
+
+		#reg_form2 {
+			width: 220px;
+			height: 400px;
+			float: right;
+		}
 
 	#wires {
 		position: absolute;
@@ -198,3 +196,6 @@
 		margin-top: -120px;
 		margin-left: 697px
 	}
+
+
+/*PROFILE*/

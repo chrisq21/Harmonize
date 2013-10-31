@@ -3,9 +3,93 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
 
-.profile_image {
-	width: 200px;
+#profile_top {
+	width: 700px;
+	height: 200px;
+	background-color: #EAEAE0;
+	padding: 15px 25px;
+	border-bottom: 1px solid lightgray;
+
+	h2 {
+		padding-top: 10px;
+		color: black;
+	}
+
+	.profile_image {
+		width: 200px;
+		height: 200px;
+		float: left;
+		margin-right: 25px;
+	}
+
+	#name_label {
+		margin-top: -5px;
+	}
+
+	#edit_save {
+		position: absolute-right;
+		margin-top: 160px;
+
+		a {
+			color: white;
+		}
+	}
 }
+
+#profile_mid {
+	width: 698px;
+	display: inline-block;
+	vertical-align: top;
+	border-left: 1px dotted gray;
+	border-right: 1px dotted gray;
+	padding: 25px 25px;
+	margin-left: 95px;
+
+	h4 {
+		color: black;
+	}
+
+	#pro_mid_top {
+		width: 700px;
+		display: inline;
+		margin-right: 30px;
+		margin-bottom: 30px;
+		border-bottom: 2px dotted lightgray;
+		padding-bottom: 20px;
+	}
+
+	#pro_mid_bottom {
+		width: 700px;
+		display: inline-block;
+		vertical-align: top;
+		padding-bottom: 25px;
+/*		border: 1px solid yellow;*/
+
+		#pro_bottom_left {
+			width: 200px;
+			float: left;
+/*			border: 1px solid green;*/
+		}
+
+		#pro_bottom_right {
+			width: 475px;
+			float: right;
+/*			border: 1px solid blue;*/
+		}
+	}
+}
+
+	#profile_bottom {
+		width: 700px;
+		background-color: #EAEAE0;
+		padding: 5px 25px;
+		border-top: 1px solid lightgray;
+
+		h4 {
+			color: black;
+		}
+	}
+
 
 .music_labels {
 	font-weight: bold;
@@ -13,4 +97,17 @@
 
 .instrument_area select {
 	display: block;
+}
+
+#bio_val {
+	width: 685px;
+	height: 100px;
+	resize: none;
+}
+
+#mail {
+	width: 50px;
+	position: absolute;
+	margin-top: -29px;
+	margin-left: -45px;
 }

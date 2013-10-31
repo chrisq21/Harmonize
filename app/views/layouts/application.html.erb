@@ -17,6 +17,9 @@
       <img src="/assets/banner.png" alt="banner">
       <ul>
         <% if signed_in? %>
+
+
+
         <li><%= link_to 'Home',users_path, :class => 'white' %></li>
         <li><%= link_to 'Profile',user_path(session[:user_id], :class => 'white') %></li>
         <li><%= link_to 'Logout', destroy_path(session[:user_id]), method: :delete, :class => 'white' %></li>  

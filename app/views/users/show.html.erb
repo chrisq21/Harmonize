@@ -1,91 +1,117 @@
-
-
+<div class="space">
 <div class='container'>
-	<div id='top'></div>
-	<div class='row'>
-		<div class='profile_image col-md-6'><%= image_tag "aaron.png" %></div>
-		<div class='col-md-8'>
-			<!-- Main Info -->
-			<h1><span class='user_info' id='name'><%= @user.first_name + " " + @user.last_name %></span></h1>
-			<h3 id='instruments_label' style='display: inline-block;'>Main Instrument(s)
+
+	<div id="profile_top">
+		<div class='profile_image'><%= image_tag "aaron.png" %></div><!--  this is where the profile image appears -->
+
+		<% if @user.id == session[:user_id] %>
+		<div id="edit_save" class="right blkbutton">
+		<a data-remote='true' id='edit_profile'>Edit Profile</a>
+		<a data-remote='true' id='update_profile'>Save Profile</a>
+		</div>
+		<% end %>
+
+		<!-- Main Info -->
+		<h2 id="name_label"><span class='user_info' id='name'><%= @user.first_name + " " + @user.last_name %></span></h2>
+		
+		<h5>Location: <span class='user_info' id='city'><%= @user.city %></span></h5>
+		<h5>Email: <span class='user_info' id='email'><%= @user.email %></span></h5>
+		<h5 id='instruments_label' style='display: inline;'>Main Instrument(s): 
 			<% @user.instruments.each do |instrument| %>
 			 <%= instrument.instrument %>
 			 <% end %>
-			</h3>
-			<label for="" id='main_instruments' style='display: inline-block; margin-left: 10px; margin-top: -50px;'></label>
-			<div id='instruments_pop_up' style='z-index:2000;'></div>
-			
-			<h4>Lives in <span class='user_info' id='city'><%= @user.city %></span></h4>
-			<h4>Email: <span class='user_info' id='email'><%= @user.email %></span></h4>
-		</div>
-		<% if @user.id == session[:user_id] %>
-		<a data-remote='true' id='edit_profile'>Edit Profile</a>
-		<a data-remote='true' id='update_profile'>Update Profile</a>
-		<% end %>
-	</div>
-	<div class='row'>
-		<div class='col-md-6'>
+		</h5>
+		<label for="" id='main_instruments' style='display: inline-block; margin-left: 10px; margin-top: -50px;'></label>
+		<div id='instruments_pop_up' style='z-index:2000;'></div>
+	</div><!-- end of PROFILE_TOP -->
+
+	<div id='profile_mid'>
+
+		<div id='pro_mid_top' class="left">
+
 			<!-- Bio -->
-			<h2>Bio</h2>
+			<h4>Biography</h4>
 			<p id='bio'><%= @user.bio %></p>
-			<!-- General Info -->
-			<h2>General Info</h2>
-			<label for="in_band" id='inband'>
-				<% if @user.inband  %>
-				<input type="hidden" id='inband_value' value='true'>
-				<%= @user.first_name + ' is currently in a band' %>
-				<% else %>
-				<input type="hidden" id='inband_value' value='false'>
-				<%= @user.first_name + ' is not currently in a band' %>
-				<% end %>
-			</label>
-			<label for="seeking" id='seeking_label'style='display: inline-block' >
-				Seeking
-				<% if @user.seeking %>
-					<% @user.seeking.instruments.each do |instrument| %>
-				 <%= instrument.instrument %>,
+		</div><!-- end of PRO_MID_TOP -->
+
+		<div id="pro_mid_bottom">
+
+			<div id="pro_bottom_left">
+				<!-- General Info -->
+				<h4>General Info</h4>
+				<label for="in_band" id='inband'>
+					<% if @user.inband  %>
+					<input type="hidden" id='inband_value' value='true'>
+					<%= @user.first_name + ' is currently in a band' %>
+					<% else %>
+					<input type="hidden" id='inband_value' value='false'>
+					<%= @user.first_name + ' is not currently in a band' %>
 					<% end %>
-				<% end %>
-				<div id='seeking_pop_up' style='z-index:2000;'></div>
-			</label>
-			<label for="" id='seeking' style='display: inline-block; margin-left: 10px; margin-top: -50px;'></label>
-			<div></div>
-			<label for="" style='display: inline-block;' id='genres_label'>Main Genres:
-				<% @user.genres.each do |genre| %>
-				<%= genre.genre %>
-				<% end %>
-			</label>
-			<label for="" id='genres' style='display: inline-block; margin-left: 10px; margin-top: -50px;'></label>
-			<div id='genres_pop_up' style='z-index:2000;'></div>
-			<label for="current_group" id='current_band'>
-			<% if @user.inband %>
-			Current Band: <label id='current_band_value'><%= @user.current_band %></label>
-			<% end %>
-			</label>
-			<!-- Experience -->
-			<h2 id='instr_experience'>Experience With</h2>
-			<% @user.instruments.reverse.each do |instrument| %>
-			<h4 style='display: inline-block;'><%= instrument.instrument %></h4>
-				<div style='display: inline-block;' class='experience' data-instr='<%=instrument.instrument %>' data-id=<%= instrument.id %>></div>
-				<div id='exp<%= instrument.id %>'>
-					<% instrument.experiences.each do |exp| %> 
-						- <%= exp.description %> <br>
+				</label>
+				<label for="seeking" id='seeking_label'style='display: inline-block' >
+					Seeking
+					<% if @user.seeking %>
+						<% @user.seeking.instruments.each do |instrument| %>
+					 <%= instrument.instrument %>,
+						<% end %>
 					<% end %>
-				</div>
-			<% end %>
-		</div>
-		<div class='col-md-6'>
-			<!-- Tracks(uploaded or soundcloud) -->
-			<h2>Tracks</h2>
+					<div id='seeking_pop_up' style='z-index:2000;'></div>
+				</label>
+				<label for="" id='seeking' style='display: inline-block; margin-left: 10px; margin-top: -50px;'></label>
+				<div></div>
+				<label for="" style='display: inline-block;' id='genres_label'>Main Genres:
+					<% @user.genres.each do |genre| %>
+					<%= genre.genre %>
+					<% end %>
+				</label>
+				<label for="" id='genres' style='display: inline-block; margin-left: 10px; margin-top: -50px;'></label>
+				<div id='genres_pop_up' style='z-index:2000;'></div>
+				<label for="current_group" id='current_band'>
+				<% if @user.inband %>
+				Current Band: <label id='current_band_value'><%= @user.current_band %></label>
+				<% end %>
+				</label>
+			</div><!-- end of PRO_BOTTOM-LEFT -->
+
+			<div id="pro_bottom_right" class="right">
+
+				<!-- Experience -->
+				<h4 id='instr_experience'>Experience With</h4>
+				<% @user.instruments.reverse.each do |instrument| %>
+				<h5 style='display: inline-block;'><i><%= instrument.instrument %></i></h5>
+
+					<div style='display: inline-block;' class='experience' data-instr='<%=instrument.instrument %>' data-id=<%= instrument.id %>></div>
+					<div id='exp<%= instrument.id %>'>
+						<% instrument.experiences.each do |exp| %> 
+							- <%= exp.description %> <br>
+						<% end %>
+					</div>
+
+				<% end %>		
+				<h4>Tracks</h4>
+				<iframe style="border: 0; width: 100%; height: 42px;" src="http://bandcamp.com/EmbeddedPlayer/album=3059345566/size=small/bgcol=ffffff/linkcol=0687f5/transparent=true/" seamless><a href="http://iammosh.bandcamp.com/album/empire">Empire by Mosh</a></iframe>
+				<iframe style="border: 0; width: 100%; height: 42px;" src="http://bandcamp.com/EmbeddedPlayer/album=1243636615/size=small/bgcol=ffffff/linkcol=0687f5/t=1/transparent=true/" seamless><a href="http://jamesadams.bandcamp.com/album/waiting-here">Waiting Here by James Adams</a></iframe>
+				<iframe style="border: 0; width: 100%; height: 42px;" src="http://bandcamp.com/EmbeddedPlayer/album=602782378/size=small/bgcol=ffffff/linkcol=0687f5/transparent=true/" seamless><a href="http://crowhurst.bandcamp.com/album/crowhurst-and-wet-dream-asphyxiation">Crowhurst and Wet Dream Asphyxiation by Crowhurst</a></iframe>
+				<iframe style="border: 0; width: 100%; height: 42px;" src="http://bandcamp.com/EmbeddedPlayer/album=3568243972/size=small/bgcol=ffffff/linkcol=0687f5/transparent=true/" seamless><a href="http://brownswoodrecordings.bandcamp.com/album/diggs-duke-offering-for-anxious">Diggs Duke - Offering For Anxious by Brownswood Recordings</a></iframe>
+				<!-- Tracks(uploaded or soundcloud) -->
+			</div><!-- end of PRO_BOTTOM_RIGHT -->
+
+		</div><!-- end of PRO_MID_BOTTOM -->
+
+	</div><!-- end of PROFILE_MID -->
+
+	<input id='user_id' type="hidden" value=<%= @user.id %>>
+	<input type="hidden" name='authenticity_token' id='token' value=<%=form_authenticity_token %>>
+	
+	<div id='bottom'>
+		<div id='profile_bottom'>
+
 			<!-- Links to other pages -->
-			<h2>Other Links</h2>
+			<h4>Other Links</h4>
 			<% @user.links.each do |link| %>
 				<%= link_to link.title, 'http://facebook.com', target: '_blank' %>
 			<% end %>	
 		</div>
-	</div>
-	<input id='user_id' type="hidden" value=<%= @user.id %>>
-	<input type="hidden" name='authenticity_token' id='token' value=<%=form_authenticity_token %>>
-	
-	<div id='bottom'></div>
-</div>
+	</div>		
+</div><!-- end of CONTAINER div -->
+</div><!-- end of SPACE div -->
