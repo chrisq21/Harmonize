@@ -185,7 +185,7 @@
 			<div id="reg_form2">
 				<%= f.input :zip, label: "Zip Code" %>
 				<%= f.input :age %>
-				<%= f.input :inband, label: "Are You Currently In A Band?", as: :radio_buttons %>
+				<%= f.input :inband, label: "Are You Currently In A Band?", as: :radio_buttons, class: 'yes_no' %>
 				<%= f.input :bio, label: "Short Bio", as: :text%>
 				<%= f.button :submit, class: "blkbutton"  %>
 			

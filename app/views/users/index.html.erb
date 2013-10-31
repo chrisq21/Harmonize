@@ -45,15 +45,15 @@
 		<span class="white big">in </span> 
 		<a id='city_search' class="underline big gray"><%= @city %></a>
 	</label>
-	<input type="text" placeholder='Enter City' id='city_field' style='z-index:100; position: absolute; left: 400px;' > 
+	<input type="text" placeholder='Enter City' id='city_field' style='z-index:100' > 
 	<button id='search_button' class='white' style='display: inline-block;'>Search</button>
-	<div id='instr_search_pop_up'></div>
-	<div id='genre_search_pop_up'></div>
+	<div id='instr_search_pop_up' class="relative"></div>
+	<div id='genre_search_pop_up' class="relative"></div>
 </div>	
 <div>
   <table id="home_table" class='table'>
 		<% @users.each do |user| %>
-			<tr><td><%= link_to user.first_name + " " + user.last_name, user %></td><td><%= user.city %></td><td><%= user.instruments.each %></td></tr>
+			<tr><td><%= link_to user.first_name + " " + user.last_name, user %></td></tr>
 		<% end %>
 	</table>
 	<form id='search_form' action=<%= users_path %> method='get'>

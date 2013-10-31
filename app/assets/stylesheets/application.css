@@ -68,6 +68,10 @@
 	height: 900px
 }
 
+.relative {
+	position: relative;
+}
+
 #top {
 	height: 61px;
 	width: 100%;
@@ -156,16 +160,23 @@
 		border-bottom: none;
 		padding: 13px 25px 12px 25px;
 		height: 60px;
+		font-size: 18px;
 	}
 
 #home_table {
-	width: 910px;
+	width: 880px;
 	border: 2px dotted gray;
 	border-top: none;
 }
 	
 	#home_table td {
 		padding: 10px 20px;
+	}
+
+	#city_field {
+		position: absolute;
+		margin-top: 5px;
+		margin-left: 350px;
 	}
 
 /*REGISTRATION PAGE*/
@@ -232,6 +243,10 @@
 			height: 400px;
 			float: right;
 		}
+
+			.yes_no {
+				display: inline;
+			}
 
 	#wires {
 		position: absolute;

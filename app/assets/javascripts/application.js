@@ -43,13 +43,13 @@ function loadInstruments(from) {
 	} else if(from == 'instr_search') {
 		changed_div = '#instr_search_pop_up';
 		drop_down_id = 'instr_search_options';
-		top = 380;
-		left = 250;
+		top = 0;
+		left = 50;
 	} else if(from == 'genre_search') {
 		changed_div = '#genre_search_pop_up';
 		drop_down_id = 'genre_search_options';
-		top = 420;
-		left = 450;
+		top = 0;
+		left = 400;
 	}
 
 //drop down for profile genre	
