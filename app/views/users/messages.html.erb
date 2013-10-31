@@ -3,8 +3,8 @@
   <table class='table'>
     <% @messages.reverse.each do |message| %>
       <% user = User.find(message.from_id) %>
-      <tr><td><%= link_to user.first_name + ' ' + user.last_name, user %><br><span style='margin-left: 20px;'></span><%= message.description %></td><td></td>
-        <td><input  type="button" class='btn btn-primary reply' data-toggle="modal" data-target="#myModal" value='Reply To <%= user.first_name %>'>
+      <tr><td><%= link_to user.first_name + ' ' + user.last_name, user %><br><span style='margin-left: 20px;'></span><%= message.description %></td>
+        <td><input  type="button" class='reply blkbutton' data-toggle="modal" data-target="#myModal" value='Reply'>
           <input type="hidden" class='message_to_val' value= <%= user.id %>>
           <input type="hidden" class='label_val' value= "Send <%= user.first_name %> A Message">
         </td></tr>
