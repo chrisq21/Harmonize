@@ -1,3 +1,4 @@
+
 class UsersController < ApplicationController
 	before_action :signed_in_user, only: [:edit, :update, :destroy]
 
@@ -5,51 +6,88 @@ class UsersController < ApplicationController
 		# render text: params
 		@all_users = User.all
 		@users = Array.new
-
 		if params[:search]
 			@genre = params[:search][:genre]
 			@instrument = params[:search][:instrument]
-			if @genre == 'Any Genre' && @instrument == 'All Musicians'
-				@users = @all_users
-			elsif @instrument == 'All Musicians'
-				# # Get All Instruments by specific genre
-				@all_users.each do |user|
-					user.genres.each do |g|
-						if g.genre == params[:search][:genre]
-							# puts user.first_name + ' has ' + params[:search][:instrument] 
-							@users.push(user)
-						end
-					end	
+
+			@city = params[:search][:city]
+			if @city == ''
+				if signed_in?
+					@city = User.find(session[:user_id]).city
+				else
+					@city = 'All Cities' 	
 				end	
-			elsif @genre == 'Any Genre'
-				# Get All Genres by specific Instrument
-				@all_users.each do |user|
-					user.instruments.each do |i|
-						if i.instrument == params[:search][:instrument]
-							puts user.first_name + ' has ' + params[:search][:instrument] 
-							# render text: 'hello'
+			end	
+		else 
+			if signed_in?
+				@city = User.find(session[:user_id]).city
+				@instrument = 'All Musicians'
+				@genre = 'Any Genre'	
+			else 
+				@city = 'All Cities'
+				@instrument = 'All Musicians'
+				@genre = 'Any Genre'	
+			end	
+		end			
+		
+		if @genre == 'Any Genre' && @instrument == 'All Musicians' && @city == 'All Cities'
+			@users = @all_users
+		elsif @instrument == 'All Musicians' && @city == 'All Cities'
+			user.genres.each do |g|
+				if g.genre == params[:search][:genre]	
+					@users.push(user)
+				end
+			end	
+		elsif @genre == 'Any Genre' && @city == 'All Cities'
+			user.instruments.each do |i|
+				if i.instrument == params[:search][:instrument]	
+					@users.push(user)
+				end	
+			end		
+		elsif @instrument == 'All Musicians' && @genre == 'Any Genre'
+			# # Get All Instruments by specific genre
+			@all_users.each do |user|
+				if user.city == @city
+					@users.push(user)
+				end	
+			end
+		elsif @instrument == 'All Musicians'
+			# # Get All Instruments by specific genre
+			@all_users.each do |user|
+				user.genres.each do |g|
+					if g.genre == params[:search][:genre]	
+						if user.city = @city
+							@users.push(user)
+						end	
+					end
+				end	
+			end	
+		elsif @genre == 'Any Genre'
+			# Get Any Genre by specific Instrument
+			@all_users.each do |user|
+				user.instruments.each do |i|
+					if i.instrument == params[:search][:instrument]
+						if user.city = @city
 							@users.push(user)
 						end	
 					end	
-				end		
-			else 
-				@all_users.each do |user|
-					user.genres.each do |g|
-						if g.genre == params[:search][:genre] 
-							user.instruments.each do |i|
-								if i.instrument == params[:search][:instrument]
+				end	
+			end
+		else				
+			@all_users.each do |user|
+				user.genres.each do |g|
+					if g.genre == params[:search][:genre] 
+						user.instruments.each do |i|
+							if i.instrument == params[:search][:instrument]
+								if user.city = @city
 									@users.push(user)
 								end	
 							end	
-						end
-					end	
-				end		
-			end	
-		else
-			@instrument = 'All Musicians'
-			@genre = 'Any Genre'
-			@users = User.all
-		end	
+						end	
+					end
+				end	
+			end		
+		end
 	end
 
 	def update_search
@@ -65,8 +103,12 @@ class UsersController < ApplicationController
 	end
 
 	def create	
+		# render text: params[:user][:zip]
+		# render text: params[:user][:zip].to_region(:city => true)
 		if params[:user][:confirm_password] == params[:user][:password]
 			@user = User.new(user_params)	
+			@user.zip.to_s.to_region(city: true)
+			@user.city = @user.zip.to_s.to_region(city: true)
 			if @user.save
 				instruments = Array.new(params[:instruments])
 				instruments.each do |i|
@@ -164,7 +206,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :age, :city, :bio, :inband)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :age, :zip, :bio, :inband)
   end
 end
 	

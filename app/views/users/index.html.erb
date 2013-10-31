@@ -41,7 +41,10 @@
 		<a id="instrument_search"><%= @instrument %></a>
 		Who Play 
 		<a id='genre_search'><%= @genre %></a>
+		in 
+		<a id='city_search'><%= @city %></a>
 	</label>
+	<input type="text" id='city_field'>
 	<button id='search_button' class='btn btn-primary' style='display: inline-block;'>Go</button>
 	<div id='instr_search_pop_up'></div>
 	<div id='genre_search_pop_up'></div>
@@ -54,6 +57,7 @@
 		<input type="hidden" name='test' value='test'>
 		<input id="search_instrument_val" type="hidden" name='search[instrument]' >
 		<input id='search_genre_val' type="hidden" name='search[genre]'>
+		<input id='search_city_val' type='hidden' name='search[city]'>
 		<input type="hidden" name='authenticity_token' value=<%= form_authenticity_token %>>
 	</form>
 </div>

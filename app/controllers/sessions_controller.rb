@@ -20,6 +20,8 @@ class SessionsController < ApplicationController
 
   def destroy
   	sign_out
+    search = {instrument: 'All Instruments', genre: 'All Genres', city: 'All Cities'}
+  
   	redirect_to users_path
   end
 end

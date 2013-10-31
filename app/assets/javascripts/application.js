@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
+
 function loadInstruments(from) {
 	changed_div = '';
 	drop_down_id = '';
@@ -191,6 +192,7 @@ $(document).ready(function() {
 	var seeking_update_counter = 0;
 	var exp_counter = 0;
 	$('#update_profile').hide();
+	$('#city_field').hide();
 
 	$('#edit_profile').click(function() {
 		$(this).hide();
@@ -356,6 +358,11 @@ $(document).ready(function() {
 		$('#instr_search_pop_up').hide();
 	});
 
+	$('#city_search').click(function() {
+		$('#city_search').html('<input type="text" placeholder="Enter A City...">');
+		$(this).attr('id', 'city_text_field');
+	});
+
 	$(document).on('click', '.instr_search_options li a', function(){
 		$('#instr_search_pop_up').hide();
 		$('#instrument_search').text($(this).text());
@@ -376,7 +383,7 @@ $(document).ready(function() {
 	$('#search_button').click(function(){
 		$('#search_instrument_val').val($('#instrument_search').text());
 		$('#search_genre_val').val($('#genre_search').text());
-
+		$('#search_city_val').val($('#city_text_field input').val());		
 		$('#search_form').submit();
 	});
 });

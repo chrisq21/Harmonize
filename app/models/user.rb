@@ -4,4 +4,5 @@ class User < ActiveRecord::Base
 	has_many :genres, dependent: :destroy
 	has_many :links, as: :linkable, dependent: :destroy
 	has_one :seeking, dependent: :destroy
+
 end

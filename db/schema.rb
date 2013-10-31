@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131028213451) do
+ActiveRecord::Schema.define(version: 20131030233122) do
 
   create_table "experiences", force: true do |t|
     t.integer  "instrument_id"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20131028213451) do
     t.text     "bio"
     t.boolean  "inband"
     t.string   "current_band"
+    t.integer  "zip"
   end
 
 end
