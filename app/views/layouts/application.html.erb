@@ -19,10 +19,10 @@
         <% if signed_in? %>
 
           <% user=User.find(session[:user_id]) %>
-          <% if user %>
-             <li><a href="#"> <img id="mail" src="/assets/mail_some.png" alt="mail"> </a></li>
-          <% else %> 
-             <li><a href="#"> <img id="mail" src="/assets/mail_none.png" alt="mail"> </a></li>
+          <% if user.messages.any? %>
+             <li><a href="../users/messages"> <img id="mail" src="/assets/mail_some.png" alt="mail"> </a></li>
+          <% else %>
+             <li><a href="../users/messages"> <img id="mail" src="/assets/mail_none.png" alt="mail"> </a></li>
           <% end %>
 
         <li><%= link_to 'Home',users_path, :class => 'white' %></li>

@@ -1,65 +1,9 @@
 <div class='container'>
-<div id="main">
-   <div>
-    <img src="/assets/main.png" alt="main">
-   </div>
-   <div>
-    <img src="/assets/1.png" alt="1">
-   </div>
-   <div>
-    <img src="/assets/2.png" alt="2">
-   </div>
-   <div>
-    <img src="/assets/3.png" alt="3">
-   </div>
-   <div>
-    <img src="/assets/4.png" alt="4">
-   </div>
-   <div>
-    <img src="/assets/5.png" alt="5">
-   </div>
-   <div>
-    <img src="/assets/6.png" alt="6">
-   </div>
-    <div>
-    <img src="/assets/7.png" alt="7">
-   </div>
-   <div>
-    <img src="/assets/8.png" alt="8">
-   </div>
-</div>
+  <h1>My Messages</h1>
+  <table class='table'>
+    <% @messages.each do |message| %>
+      <tr><td><%= link_to User.find(message.from_id).first_name + ' ' + User.find(message.from_id).last_name, User.find(message.from_id) %><br><span style='margin-left: 20px;'></span><%= message.description %></td><td></td><td><input type="button" class='btn btn-primary' value='Reply'></td></tr>
+    <% end %>
+  </table>
+ </div> 
 
-<% if signed_in? %>
-<% else %>
-<div id="start">
-<%= link_to 'Get Started!', login_path, :class => 'white', :id => 'start_link' %>
-</div>
-<% end %>
-
-<div id="home_content">
-	<label for="" style='display: inline-block;'>Find 
-		<a id="instrument_search"><%= @instrument %></a>
-		Who Play 
-		<a id='genre_search'><%= @genre %></a>
-		in 
-		<a id='city_search'><%= @city %></a>
-	</label>
-	<input type="text" id='city_field'>
-	<button id='search_button' class='btn btn-primary' style='display: inline-block;'>Go</button>
-	<div id='instr_search_pop_up'></div>
-	<div id='genre_search_pop_up'></div>
-	<table class='table'>
-		<% @users.each do |user| %>
-			<tr><td><%= link_to user.first_name + " " + user.last_name, user %></td></tr>
-		<% end %>
-	</table>
-	<form id='search_form' action=<%= users_path %> method='get'>
-		<input type="hidden" name='test' value='test'>
-		<input id="search_instrument_val" type="hidden" name='search[instrument]' >
-		<input id='search_genre_val' type="hidden" name='search[genre]'>
-		<input id='search_city_val' type='hidden' name='search[city]'>
-		<input type="hidden" name='authenticity_token' value=<%= form_authenticity_token %>>
-	</form>
-</div>
-
-</div>

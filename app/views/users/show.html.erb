@@ -2,14 +2,21 @@
 <div class='container'>
 
 	<div id="profile_top">
-		<div class='profile_image'><%= image_tag "aaron.png" %></div><!--  this is where the profile image appears -->
-
-		<% if @user.id == session[:user_id] %>
+		<div class='profile_image'>
+			<% if @user.profile_image.to_s == '' %>
+				<%= image_tag "profile_placeholder.png" %>
+			<% else %>	
+				<%= image_tag @user.profile_image_url %>
+			<% end %>	
+		</div><!--  this is where the profile image appears -->
 		<div id="edit_save" class="right blkbutton">
-		<a data-remote='true' id='edit_profile'>Edit Profile</a>
-		<a data-remote='true' id='update_profile'>Save Profile</a>
+			<% if @user.id == session[:user_id] %>	
+				<a data-remote='true' id='edit_profile'>Edit Profile</a>
+				<a data-remote='true' id='update_profile'>Save Profile</a>
+			<% else %>
+				<a data-remote='true' id='send_message'>Message</a>	
+			<% end %>
 		</div>
-		<% end %>
 
 		<!-- Main Info -->
 		<h2 id="name_label"><span class='user_info' id='name'><%= @user.first_name + " " + @user.last_name %></span></h2>

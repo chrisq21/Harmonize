@@ -1,4 +1,4 @@
-
+	
 class UsersController < ApplicationController
 	before_action :signed_in_user, only: [:edit, :update, :destroy]
 
@@ -106,9 +106,12 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
+	def messages
+		user = User.find(session[:user_id])
+		@messages = user.messages
+	end
+
 	def create	
-		# render text: params[:user][:zip]
-		# render text: params[:user][:zip].to_region(:city => true)
 		if params[:user][:confirm_password] == params[:user][:password]
 			@user = User.new(user_params)	
 			@user.zip.to_s.to_region(city: true)
@@ -219,7 +222,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :age, :zip, :bio, :inband)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :profile_image, :age, :zip, :bio, :inband)
   end
 end
 	

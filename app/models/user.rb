@@ -1,3 +1,4 @@
+
 class User < ActiveRecord::Base
 	validates :first_name, :last_name, :email, :password, :city, presence: true
 	has_many :instruments, dependent: :destroy
@@ -6,4 +7,5 @@ class User < ActiveRecord::Base
 	has_many :links, as: :linkable, dependent: :destroy
 	has_one :seeking, dependent: :destroy
 
+	mount_uploader :profile_image, ProfileImageUploader
 end

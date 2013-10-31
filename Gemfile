@@ -41,6 +41,8 @@ gem 'simple_form'
 
 gem 'area'
 
+gem 'carrierwave'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

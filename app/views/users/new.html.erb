@@ -173,7 +173,7 @@
 		</div>
 		
 		<div id="reg_form">
-			<%= simple_form_for(@user, html: {class: 'register_form' }) do |f|  %>
+			<%= simple_form_for(@user, html: {class: 'register_form', multipart: true }) do |f|  %>
 			<div id="reg_form1">
 			
 				<%= f.input :first_name %>
@@ -187,6 +187,7 @@
 				<%= f.input :age %>
 				<%= f.input :inband, label: "Are You Currently In A Band?", as: :radio_buttons %>
 				<%= f.input :bio, label: "Short Bio", as: :text%>
+				<%= f.file_field :profile_image %>
 				<%= f.button :submit, class: "blkbutton"  %>
 			
 			</div>
