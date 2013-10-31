@@ -82,7 +82,9 @@
 					Seeking
 					<% if @user.seeking %>
 						<% @user.seeking.instruments.each do |instrument| %>
-					 <%= instrument.instrument %>,
+					 		<span class='seeking_items'><%= instrument.instrument %><% if instrument != @user.seeking.instruments.last %>,
+					 			<% end %>
+					 		</span>
 						<% end %>
 					<% end %>
 					<div id='seeking_pop_up' style='z-index:2000;'></div>
@@ -91,7 +93,9 @@
 				<div></div>
 				<label for="" style='display: inline-block;' id='genres_label'>Main Genres:
 					<% @user.genres.each do |genre| %>
-					<%= genre.genre %>
+					<span class='genre_items'><%= genre.genre %><% if genre != @user.genres.last %>,
+						<% end %>
+					</span>
 					<% end %>
 				</label>
 				<label for="" id='genres' style='display: inline-block; margin-left: 10px; margin-top: -50px;'></label>
