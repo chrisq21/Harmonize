@@ -52,14 +52,20 @@
 </div>	
 <div>
   <table id="home_table" class='table'>
+    <tr><th>Info</th><th>Instrument(s) Played</th><th>Genres</th><th>Seeking</th></tr>
 		<% @users.each do |user| %>
-			<tr><td><%= link_to user.first_name + " " + user.last_name, user %><br>
+
+			<tr><td><%= link_to user.first_name + " " + user.last_name, user, class: 'bold'%><br>
         <% if user.profile_image_url.to_s != '' %>
-        <%= image_tag user.profile_image_url, class: 'thumbnail'%> <%= user.city %>
+        <%= image_tag user.profile_image_url, class: 'thumbnail'%> <br> <br><br>  <%= user.city %>
         <% else %>
-        <%= image_tag 'profile_placeholder.png', class: 'thumbnail'%> <%= user.city %>
+        <%= image_tag 'profile_placeholder.png', class: 'thumbnail'%> <br> <br> <br><%= user.city %>
         <% end %>
-      </td></tr>
+      </td>
+      <td><%= user.instruments.pluck(:instrument).join(', ') %></td>
+      <td><%= user.genres.pluck(:genre).join(', ') %></td>
+      <td><%= user.seeking.instruments.pluck(:instrument).join(', ') %></td></tr>
+      </tr>
       <% end %>
 	</table>
 	<form id='search_form' action=<%= users_path %> method='get'>
