@@ -126,7 +126,7 @@
 					<h4 id='instrument_results'></h4>
 				</div>
 
-				<div id="seekier" class='col-md-6'>
+				<div id="seeker" class='col-md-6'>
 					<div class='seeking_options'>
 						<h4>Seeking:</h4>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
@@ -181,14 +181,15 @@
 				<%= f.input :email %>
 				<%= f.input :password %>
 				<%= f.input :confirm_password %>
+				Profile Image <br>
+				<%= f.file_field :profile_image %>
 			</div>
 			<div id="reg_form2">
 				<%= f.input :zip, label: "Zip Code" %>
 				<%= f.input :age %>
-				<%= f.input :inband, label: "Are You Currently In A Band?", as: :radio_buttons, class: 'yes_no' %>
-				<%= f.input :bio, label: "Short Bio", as: :text%>
-				<%= f.file_field :profile_image %>
-				<%= f.button :submit, class: "blkbutton"  %>
+				<%= f.input :inband, label: "Are You Currently In A Band?", as: :radio_buttons %>
+				<%= f.input :bio, label: "Biography", as: :text %>
+				<%= f.button :submit, class: "blkbutton right meow"  %>
 			
 			</div>
 			<% end %> 
