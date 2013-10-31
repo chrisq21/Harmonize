@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 		elsif @instrument == 'All Musicians' && @genre == 'Any Genre'
 			# # Get All Instruments by specific genre
 			@all_users.each do |user|
-				if user.city == @city
+				if user.city.downcase == @city.downcase
 					@users.push(user)
 				end	
 			end
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
 			@all_users.each do |user|
 				user.genres.each do |g|
 					if g.genre == params[:search][:genre]	
-						if user.city = @city
+						if user.city.downcase == @city.downcase
 							@users.push(user)
 						end	
 					end
@@ -67,7 +67,7 @@ class UsersController < ApplicationController
 			@all_users.each do |user|
 				user.instruments.each do |i|
 					if i.instrument == params[:search][:instrument]
-						if user.city = @city
+						if user.city.downcase == @city.downcase
 							@users.push(user)
 						end	
 					end	
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
 					if g.genre == params[:search][:genre] 
 						user.instruments.each do |i|
 							if i.instrument == params[:search][:instrument]
-								if user.city = @city
+								if user.city.downcase == @city.downcase
 									@users.push(user)
 								end	
 							end	
