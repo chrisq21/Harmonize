@@ -28,16 +28,16 @@ function loadInstruments(from) {
 		drop_down_id = 'instr_drop_down';
 		$('#genres_pop_up').hide();
 		$('#seeking_pop_up').hide();
-		top = 520;
-		left = 500;
+		top = 0;
+		left = 250;
 	}
 	else if(from == 'seeking') {
 		changed_div = '#seeking_pop_up';
 		drop_down_id = 'seeking_drop_down';
 		$('#instruments_pop_up').hide();
 		$('#genres_pop_up').hide();
-		top = 230;
-		left = 320;
+		top = 25;
+		left = 0;
 
 //drop down on home page		
 	} else if(from == 'instr_search') {
@@ -55,8 +55,8 @@ function loadInstruments(from) {
 //drop down for profile genre	
 	else {
 		//ADD GENRE POP UP
-		top = 0;
-		left = 460;
+		top = 25;
+		left = 150;
 		$('#instruments_pop_up').hide();
 		$('#seeking_pop_up').hide();
 		changed_div = '#genres_pop_up';

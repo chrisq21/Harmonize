@@ -52,7 +52,7 @@
 			 <% end %>
 		</h5>
 		<label for="" id='main_instruments' style='display: inline-block; margin-left: 10px; margin-top: -50px;'></label>
-		<div id='instruments_pop_up' style='z-index:2000;'></div>
+		<div id='instruments_pop_up' style='z-index:2000;' class="relative"></div>
 	</div><!-- end of PROFILE_TOP -->
 
 	<div id='profile_mid'>
@@ -73,10 +73,10 @@
 				<label for="in_band" id='inband'>
 					<% if @user.inband  %>
 					<input type="hidden" id='inband_value' value='true'>
-					<%= @user.first_name + ' is currently in a band' %>
+					<%= @user.first_name %> <span class='bold'>is</span> currently in a band
 					<% else %>
 					<input type="hidden" id='inband_value' value='false'>
-					<%= @user.first_name + ' is not currently in a band' %>
+					<%= @user.first_name %> <span class='bold'>is not</span> currently in a band
 					<% end %>
 				</label>
 				<label for="seeking" id='seeking_label'style='display: inline-block' >
@@ -88,11 +88,12 @@
 					 		</span>
 						<% end %>
 					<% end %>
-					<div id='seeking_pop_up' style='z-index:2000;'></div>
+					<div id='seeking_pop_up' style='z-index:2000;' class='relative'></div>
 				</label>
 				<label for="" id='seeking' style='display: inline-block; margin-left: 10px; margin-top: -50px;'></label>
 				<div></div>
 				<label for="" style='display: inline-block;' id='genres_label'><span class="bold">Genre(s): </span>
+					<div id='genres_pop_up' style='z-index:2000;' class="relative"></div>
 					<% @user.genres.each do |genre| %>
 					<span class='genre_items'><%= genre.genre %><% if genre != @user.genres.last %>,
 						<% end %>
@@ -100,7 +101,7 @@
 					<% end %>
 				</label>
 				<label for="" id='genres' style='display: inline-block; margin-left: 10px; margin-top: -50px;'></label>
-				<div id='genres_pop_up' style='z-index:2000;'></div>
+				
 				<label for="current_group" id='current_band'>
 				<% if @user.inband %>
 				<span class="bold">Current Band: </span><label id='current_band_value'><%= @user.current_band %></label>

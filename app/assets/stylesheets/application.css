@@ -94,7 +94,7 @@
 
 .container {
 /*	border: 1px solid green;*/
-	margin-top: 50px;
+	margin-top: 40px;
 }
 
 
@@ -169,9 +169,18 @@
 	border-top: 2px solid lightgray;
 }
 
+	#home_table tr:nth-child(even) {
+		background-color:#EAEAE0 ;
+	}
+
+	#home_table tr:nth-child(odd) {
+		background-color:#f0f0df;
+	}
+
 	#home_table th {
-		font-size: 18px;
+		font-size: 15px;
 		padding-left: 20px;
+		background-color: white;
 	}
 	
 	#home_table td {
@@ -185,12 +194,12 @@
 	}
 
 	.info_show {
-		background-color: #EAEAE0;
+/*		background-color: #EAEAE0;*/
 		width: 150px;
 	}
 
 	.bbg {
-		background-color: #EAEAE0;
+		background-color: ;
 	}
 
 	.bbb {
@@ -201,9 +210,9 @@
 		width: 100px;
 	}
 
-	.data_table {
-		width: 243px;
-	}
+/*	.data_table {
+		width: 100pxpx;
+	}*/
 
 /*REGISTRATION PAGE*/
 #container_reg {

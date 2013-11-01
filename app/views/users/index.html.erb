@@ -50,22 +50,33 @@
 	<div id='instr_search_pop_up' class="relative"></div>
 	<div id='genre_search_pop_up' class="relative"></div>
 </div>	
+
 <div>
   <table id="home_table" class='table'>
-    <tr><th>Info</th><th>Instrument(s) Played</th><th>Genres</th><th>Seeking</th></tr>
-		<% @users.each do |user| %>
-			<tr><td class="info_show"><%= link_to user.first_name + " " + user.last_name, user, class: 'bold'%><br>
+    <tr>
+      <th></th>
+      <th>Info</th>
+      <th>City</th>
+      <th>Plays</th>
+      <th>Genre</th>
+      <th>Seeking</th>
+    </tr>
+	<% @users.each do |user| %>
+		<tr>
+      <td style="width:60px;">
         <% if user.profile_image_url.to_s != '' %>
-        <%= image_tag user.profile_image_url, class: 'thumbnail'%> <br> <br><br>  <%= user.city %>
+        <%= image_tag user.profile_image_url, class: 'thumbnail'%>
         <% else %>
-        <%= image_tag 'profile_placeholder.png', class: 'thumbnail'%> <br> <br> <br><%= user.city %>
+        <%= image_tag 'profile_placeholder.png', class: 'thumbnail'%>
         <% end %>
       </td>
-      <td class="data_table bbb"><%= user.instruments.pluck(:instrument).join(', ') %></td>
-      <td class="data_table bbg"><%= user.genres.pluck(:genre).join(', ') %></td>
-      <td class="data_table bbb"><%= user.seeking.instruments.pluck(:instrument).join(', ') %></td></tr>
-      </tr>
-      <% end %>
+      <td class="info_show"><%= link_to user.first_name + " " + user.last_name, user, class: 'bold'%></td>
+      <td class="data_table"><%= user.city %></td>
+      <td class="data_table"><%= user.instruments.pluck(:instrument).join(', ') %></td>
+      <td class="data_table"><%= user.genres.pluck(:genre).join(', ') %></td>
+      <td class="data_table"><%= user.seeking.instruments.pluck(:instrument).join(', ') %></td>
+    </tr>
+  <% end %>
 
 	</table>
 	<form id='search_form' action=<%= users_path %> method='get'>
