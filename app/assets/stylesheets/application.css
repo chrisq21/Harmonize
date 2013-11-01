@@ -137,16 +137,16 @@
 		margin-top: 155px;
 		margin-left: 734px;
 		padding: 37px 65px;
-		color: black;
+		color: white;
 		font-weight: bold;
 		font-size: 17px;
-		background-image: url(/assets/start.png);
+		background-image: url(/assets/start1.png);
 		height: 20px;
 		width: 100px;
 	}
 
 		#start_link {
-			color: black;
+			color: white;
 		}
 
 #search_bar {
