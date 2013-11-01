@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="shortcut icon" href="http://www.favicongenerator.com/favicon2/h-20131028-favicon.ico">
+  <title>Harmonize</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+<body>
+<!-- downloads -->
+  <div id="top">
+    <div id="nav">
+      <a href="/users"> <img src="/assets/banner.png" alt="banner"> </a>
+      <ul>
+        <% if signed_in? %>
+
+          <% user=User.find(session[:user_id]) %>
+          <% if user.messages.any? %>
+             <li><a href="../users/messages"> <img id="mail" src="/assets/mail_some.png" alt="mail"> </a></li>
+          <% else %>
+             <li><a href="../users/messages"> <img id="mail" src="/assets/mail_none.png" alt="mail"> </a></li>
+          <% end %>
+
+        <li><%= link_to 'Home',users_path, :class => 'white bold' %></li>
+        <li><%= link_to 'Profile',user_path(session[:user_id], :class => 'white bold') %></li>
+        <li><%= link_to 'Logout', destroy_path(session[:user_id]), method: :delete, :class => 'white bold' %></li>  
+        <% else %>
+        <li><%= link_to 'Home',users_path, :class => 'white bold' %></li>
+        <li><%= link_to 'Login', login_path, :class => 'white bold' %></li> 
+        <li><%= link_to 'Sign Up',new_user_path, :class => 'white bold' %></li>
+        <% end %>
+      </ul>
+    </div><!-- end of NAV div -->
+  </div><!--  end of TOP div -->
+
+  <%= yield %>
+
+<p style="text-align: center; font-size: 10px;">About | Contact | Blog | Feedback | Help | Community | Terms | Privacy</p>
+</body>
+</html>

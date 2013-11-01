@@ -1,0 +1,91 @@
+<div class='container'>
+<div id="main">
+   <div>
+    <img src="/assets/main.png" alt="main">
+   </div>
+   <div>
+    <img src="/assets/1.png" alt="1">
+   </div>
+   <div>
+    <img src="/assets/2.png" alt="2">
+   </div>
+   <div>
+    <img src="/assets/3.png" alt="3">
+   </div>
+   <div>
+    <img src="/assets/4.png" alt="4">
+   </div>
+   <div>
+    <img src="/assets/5.png" alt="5">
+   </div>
+   <div>
+    <img src="/assets/6.png" alt="6">
+   </div>
+    <div>
+    <img src="/assets/7.png" alt="7">
+   </div>
+   <div>
+    <img src="/assets/8.png" alt="8">
+   </div>
+</div>
+
+<% if signed_in? %>
+<% else %>
+<div id="start">
+<%= link_to 'Get Started!', login_path, :class => 'white', :id => 'start_link' %>
+</div>
+<% end %>
+
+<div id="search_bar">
+	<label for="" style='display: inline-block;'>.
+    <span class="white big">Find</span> 
+		<a id="instrument_search" class="underline big gray"><%= @instrument %></a>
+		<span class="white big">Who Play </span> 
+		<a id='genre_search' class="underline big gray"><%= @genre %></a>
+		<span class="white big">in </span> 
+		<a id='city_search' class="underline big gray"><%= @city %></a>
+	</label>
+	<input type="text" placeholder='Enter City' id='city_field' style='z-index:100' > 
+	<button id='search_button' class='white bold' style='display: inline-block;'>Search</button>
+	<div id='instr_search_pop_up' class="relative"></div>
+	<div id='genre_search_pop_up' class="relative"></div>
+</div>	
+
+<div>
+  <table id="home_table" class='table'>
+    <tr style="height: 18px;">
+      <th></th>
+      <th>Info</th>
+      <th>City</th>
+      <th>Plays</th>
+      <th>Genre</th>
+      <th>Seeking</th>
+    </tr>
+	<% @users.each do |user| %>
+		<tr>
+      <td style="width:60px;">
+        <% if user.profile_image_url.to_s != '' %>
+        <%= image_tag user.profile_image_url, class: 'thumbnail'%>
+        <% else %>
+        <%= image_tag 'profile_placeholder.png', class: 'thumbnail'%>
+        <% end %>
+      </td>
+      <td class="td_width"><%= link_to user.first_name + " " + user.last_name, user, class: 'bold'%></td>
+      <td class="td_width"><%= user.city %></td>
+      <td class="bold"><%= user.instruments.pluck(:instrument).join(', ') %></td>
+      <td><%= user.genres.pluck(:genre).join(', ') %></td>
+      <td><%= user.seeking.instruments.pluck(:instrument).join(', ') %></td>
+    </tr>
+  <% end %>
+
+	</table>
+	<form id='search_form' action=<%= users_path %> method='get'>
+		<input type="hidden" name='test' value='test'>
+		<input id="search_instrument_val" type="hidden" name='search[instrument]' >
+		<input id='search_genre_val' type="hidden" name='search[genre]'>
+		<input id='search_city_val' type='hidden' name='search[city]'>
+		<input type="hidden" name='authenticity_token' value=<%= form_authenticity_token %>>
+	</form>
+</div>
+
+</div>

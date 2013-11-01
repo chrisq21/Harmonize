@@ -1,0 +1,27 @@
+<div class="space">
+
+<div class='container'>
+	<div id="login">
+		<%= simple_form_for @user, url: sessions_path, html: {class: 'form-horizontal margintop white'} do |form_field| %>
+			<%= form_field.input :email, label: 'Email'%>
+			<%= form_field.input :password, label: 'Password' %>
+			<%= form_field.button :submit, value:'Log In', class: "blkbutton margintop" %>
+		<% end %>
+
+		<div class="white">
+			<% if flash[:errors] %>
+				<% flash[:errors].each do |error| %>
+					<p><%= error %></p>
+				<% end %>
+			<% end %>
+			<% if flash[:message] %>
+				<p><%= flash[:message] %></p>
+			<% end %>
+
+		</div><!-- end of ERRORS div -->
+	</div><!-- end of LOGIN div -->
+	<p class="center">Don't Have An Account? <%= link_to "Register", new_user_path %></p>
+</div><!-- end if CONTAINER div -->
+
+</div>
+<div class="space2"></div>

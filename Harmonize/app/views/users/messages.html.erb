@@ -1,0 +1,54 @@
+<div class="space">
+<div class='container'>
+  <div id="mes_container">
+
+  <h4>My Messages</h4>
+  <table class='table'>
+    <% if @messages.any? %>
+      <% @messages.reverse.each do |message| %>
+        <% user = User.find(message.from_id) %>
+        <tr><td><%= link_to user.first_name + ' ' + user.last_name, user %><br><span style='margin-left: 20px;'></span><%= message.description %></td>
+          <td>
+            <form style='display:inline;' action="<%= delete_message_path(message.id) %>" method='post'>
+              <input type="submit" class='reply blk1button right' value='Delete'>
+              <input type="hidden" name='authenticity_token' id='token' value=<%=form_authenticity_token %>>
+            </form>
+            <input type="button" class='reply blkbutton right' data-toggle="modal" data-target="#myModal" value='Reply'>
+            <input type="hidden" class='message_to_val' value = <%= user.id %>>
+            <input type="hidden" class='label_val' value= "Send <%= user.first_name %> A Message">
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <h4>No Messages</h4>
+    <% end %>
+      
+  </table>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="label">Send A Message</h4>
+          </div>
+          <form action="<%= new_message_path %>" method='post' id='message_form'>
+            <div class="modal-body">
+            <textarea name="description" form='message_form' cols="500" rows="3" ></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="blkbutton" data-dismiss="modal">Close</button>
+              <input type="hidden" name='message_to' id='message_to' >
+              <input type="hidden" name='authenticity_token' id='token' value=<%=form_authenticity_token %>>
+              <input type="submit" class="blk1button" value='Send'>
+            </div>
+          </form>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+
+</div><!-- end of MES_CONTAINER -->
+</div>
+
+<div class="space2"></div>
