@@ -1,0 +1,338 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ *= require bootstrap
+ */
+
+* {
+	margin: 0px auto;
+	padding: 0px 0px;
+/*	color: black;*/
+	font-size: 12px;
+}
+
+.big {
+	font-size: 18px;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.white {
+	color: white;
+}
+
+.gray {
+	color: gray;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.blkbutton {
+	background-color: gray;
+	border-radius: 5px;
+	color: white;
+	border: 1px solid lightgray;
+	padding: 5px 15px;
+	font-size: 12px;
+}
+
+.blk1button {
+	background-color: black;
+	border-radius: 5px;
+	color: white;
+	border: 1px solid lightgray;
+	padding: 5px 15px;
+	font-size: 12px;
+}
+
+.margintop {
+	margin-top: 20px;
+}
+
+.center {
+	margin-top: 25px;
+	text-align: center;
+}
+
+.space {
+	height: 620px
+}
+
+.space2 {
+	height: 230px;
+}
+
+.space3 {
+	height: 310px;
+}
+
+.space4 {
+	height: 20px;
+}
+
+
+.td_width {
+	width: 80px;
+}
+
+.relative {
+	position: relative;
+}
+
+#top {
+	height: 61px;
+	width: 100%;
+	background-color: black;
+}
+
+ 	#nav {
+		width: 1000px;
+	}
+
+		#nav ul {
+			float: right;
+		}
+
+			#nav ul li {
+				list-style: none;
+				display: inline-block;
+				padding: 20px 0px 0px 20px;
+			}
+
+.container {
+/*	border: 1px solid green;*/
+	margin-top: 40px;
+}
+
+
+
+/*HOME PAGE*/
+#login {
+	margin-top: 50px;
+	width: 220px;
+	height: 160px;
+	padding: 90px 90px;
+	background-image: url(/assets/amp.png);
+}
+
+#main {
+	width: 900px;
+	height: 244px;
+	margin-left: 20px;
+	position: absolute;
+}
+
+	#main > div { 
+	    position: absolute; 
+	    top: 10px; 
+	    left: 10px; 
+	    right: 10px; 
+	    bottom: 10px; 
+	}
+
+	#start {
+		position:  absolute;
+		margin-top: 155px;
+		margin-left: 734px;
+		padding: 37px 65px;
+		color: white;
+		font-weight: bold;
+		background-image: url(/assets/start1.png);
+		height: 20px;
+		width: 100px;
+	}
+
+		#start_link {
+			color: white;
+			font-size: 14px;
+			margin-left: 5px;
+			margin-bottom: 10px;
+		}
+
+#search_bar {
+	margin-top: 249px;
+	width: 860px;
+	height: 20px;
+	padding: 15px 25px 15px 25px;
+	background-color: black;
+}
+
+	#search_bar span {
+		font-size: 14px;
+	}
+
+	#search_bar a {
+		font-size: 14px;
+	}
+
+	#search_button {
+		position: absolute;
+		margin-left: 50px;
+		margin-top: -10px;
+		background-color: black;
+		border: 1px solid gray;
+/*		border-left: 1px solid gray;
+		border-right: 1px solid gray;*/
+/*		border-top: none;
+		border-bottom: none;*/
+		padding: 8px 10px;
+/*		height: 30px;*/
+		font-size: 15px;
+	}
+
+#home_table {
+	width: 880px;
+	border: 2px dotted lightgray;
+	border-top: 2px solid lightgray;
+}
+
+	#home_table tr:nth-child(even) {
+		background-color:#EAEAE0 ;
+	}
+
+	#home_table tr:nth-child(odd) {
+		background-color:#f0f0df;
+	}
+
+	#home_table th {
+		font-size: 12px;
+		padding-left: 20px;
+		background-color: white;
+		font-weight: bold;
+		font-style: italic;
+		height: 20px;
+	}
+	
+	#home_table td {
+		padding: 10px 20px;
+	}
+
+	#city_field {
+		position: absolute;
+		margin-top: 5px;
+		margin-left: 250px;
+	}
+
+
+/*REGISTRATION PAGE*/
+#container_reg {
+	background-color: #EAEAE0;
+	width: 800px;
+	height: 850px;
+	padding: 25px 50px;
+	border: 1px solid lightgray;
+	box-shadow: 10px 10px 10px gray;
+	margin-top: 60px;
+}
+
+	#reg_title {
+		text-align: center;
+		color: black;
+	}
+
+	#new_top {
+		width: 1000px;
+		height: 400px;
+		display: inline;
+		vertical-align: top;
+	}
+
+		#genre {
+	/*		border: 1px solid red;*/
+			width: 350px;
+			height: 360px;
+			float: left;
+			margin: 0px 30px 0px 20px;
+		}
+
+		#main_instr {
+	/*		border: 1px solid blue;*/
+			width: 200px;
+			height: 250px;
+			float: left;
+		}
+
+		#seeker {
+	/*		border: 1px solid yellow;*/
+			width: 180px;
+			height: 250px;
+			float: right;
+		}
+
+	#reg_form {
+		width: 700px;
+		height: 400px;
+		vertical-align: top;
+		display: inline-block;
+		margin-left: 50px;
+	}
+
+		#reg_form1 {
+			width: 300px;
+			height: 400px;
+			float: left;
+			margin-left: 50px;
+		}
+
+			.radio {
+				display: inline-block;
+				margin: 0px 20px 20px 20px;
+
+			}
+
+			.collection_radio_buttons {
+				display: inline-block;
+			}
+
+			.user_bio {
+				height: 100px;
+			}
+
+			textarea {
+				resize: none;
+			}
+
+			.meow {
+				margin-right: 30px;
+			}
+
+		#reg_form2 {
+			width: 250px;
+			height: 400px;
+			float: right;
+		}
+
+	#wires {
+		position: absolute;
+		width: 300px;
+		margin-top: -120px;
+		margin-left: 697px
+	}
+
+
+/*Messages*/
+
+#mes_container {
+	width: 700px;
+}
