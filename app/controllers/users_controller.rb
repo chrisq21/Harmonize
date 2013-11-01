@@ -94,10 +94,6 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def update_search
-		render text: params
-	end
-
 	def show
 		@user = User.find(params[:id])
 	end
@@ -118,6 +114,11 @@ class UsersController < ApplicationController
 		message.description = params[:description]
 		message.save
 		redirect_to User.find(params[:message_to])
+	end
+
+	def delete_message
+		Message.destroy(params[:id])
+		redirect_to messages_path
 	end
 
 	def create	
