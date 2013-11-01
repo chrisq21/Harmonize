@@ -144,7 +144,7 @@
 		<label for="links" id='links' style='display:inline-block;'></label>
 		<br>
 		<% @user.links.each do |link| %>
-			<%= link_to link.title, link.url, target: '_blank' %> | 
+			<%= link_to link.title, link.url, target: '_blank' %><% if link != @user.links.last %> | <% end %>
 		<% end %>	
 	</div>
 	<div id='bottom'>
