@@ -60,7 +60,8 @@
 		<div id='pro_mid_top' class="left">
 
 			<!-- Bio -->
-			<h4>Biography</h4>
+			<div id="bio_title"></div>
+			
 			<p id='bio'><%= @user.bio %></p>
 		</div><!-- end of PRO_MID_TOP -->
 
@@ -79,7 +80,7 @@
 					<% end %>
 				</label>
 				<label for="seeking" id='seeking_label'style='display: inline-block' >
-					Seeking
+					<span class="bold">Seeking: </span>
 					<% if @user.seeking %>
 						<% @user.seeking.instruments.each do |instrument| %>
 					 		<span class='seeking_items'><%= instrument.instrument %><% if instrument != @user.seeking.instruments.last %>,
@@ -91,7 +92,7 @@
 				</label>
 				<label for="" id='seeking' style='display: inline-block; margin-left: 10px; margin-top: -50px;'></label>
 				<div></div>
-				<label for="" style='display: inline-block;' id='genres_label'>Main Genres:
+				<label for="" style='display: inline-block;' id='genres_label'><span class="bold">Genre(s): </span>
 					<% @user.genres.each do |genre| %>
 					<span class='genre_items'><%= genre.genre %><% if genre != @user.genres.last %>,
 						<% end %>
@@ -102,7 +103,7 @@
 				<div id='genres_pop_up' style='z-index:2000;'></div>
 				<label for="current_group" id='current_band'>
 				<% if @user.inband %>
-				Current Band: <label id='current_band_value'><%= @user.current_band %></label>
+				<span class="bold">Current Band: </span><label id='current_band_value'><%= @user.current_band %></label>
 				<% end %>
 				</label>
 			</div><!-- end of PRO_BOTTOM-LEFT -->

@@ -63,7 +63,7 @@
       </td>
       <td class="data_table bbb"><%= user.instruments.pluck(:instrument).join(', ') %></td>
       <td class="data_table bbg"><%= user.genres.pluck(:genre).join(', ') %></td>
-      <td class="data_table bbb"><%= user.instruments.pluck(:instrument).join(', ') %></td></tr>
+      <td class="data_table bbb"><%= user.seeking.instruments.pluck(:instrument).join(', ') %></td></tr>
       </tr>
       <% end %>
 
