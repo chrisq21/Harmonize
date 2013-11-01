@@ -142,9 +142,9 @@
 		<!-- Links to other pages -->
 		<h4 style='display:inline-block;'>Other Links</h4>
 		<label for="links" id='links' style='display:inline-block;'></label>
+		<br>
 		<% @user.links.each do |link| %>
-			<br>
-			<%= link_to link.title, link.url, target: '_blank' %>
+			<%= link_to link.title, link.url, target: '_blank' %> | 
 		<% end %>	
 	</div>
 	<div id='bottom'>

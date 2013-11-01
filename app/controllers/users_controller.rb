@@ -213,11 +213,10 @@ class UsersController < ApplicationController
 	    	end
 	    	if params[:link]
 	    		links = params[:link]
-	    		link_count = links.count	
-	    		for i in 0..link_count
+	    		link_count = links[:title].count	
+	    		for i in 0...link_count
 	    			Link.new(linkable_id: @user.id, linkable_type: 'User', title: links[:title][i], url: links[:url][i]).save
 	    		end	
-	    		Link.last.destroy
 	    	end
 	    	
 
