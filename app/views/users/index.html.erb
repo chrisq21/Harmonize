@@ -70,11 +70,11 @@
         <%= image_tag 'profile_placeholder.png', class: 'thumbnail'%>
         <% end %>
       </td>
-      <td class="info_show"><%= link_to user.first_name + " " + user.last_name, user, class: 'bold'%></td>
-      <td class="data_table"><%= user.city %></td>
-      <td class="data_table"><%= user.instruments.pluck(:instrument).join(', ') %></td>
-      <td class="data_table"><%= user.genres.pluck(:genre).join(', ') %></td>
-      <td class="data_table"><%= user.seeking.instruments.pluck(:instrument).join(', ') %></td>
+      <td><%= link_to user.first_name + " " + user.last_name, user, class: 'bold'%></td>
+      <td><%= user.city %></td>
+      <td><%= user.instruments.pluck(:instrument).join(', ') %></td>
+      <td><%= user.genres.pluck(:genre).join(', ') %></td>
+      <td><%= user.seeking.instruments.pluck(:instrument).join(', ') %></td>
     </tr>
   <% end %>
 
