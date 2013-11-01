@@ -204,7 +204,36 @@ $(document).ready(function() {
 		$('#genres_pop_up').hide();
 		$('#instruments_pop_up').hide();
 		$('#seeking_pop_up').hide();
+		// $('#genre_search_pop_up').hide();
 	});
+
+	$('#genre_search_pop_up').mouseleave(function() {
+		$(this).hide();
+	});
+
+	$('#instr_search_pop_up').mouseleave(function() {
+		$(this).hide();
+	});
+
+	$('#genres_pop_up').mouseleave(function() {
+		$(this).hide();
+	});
+
+	$('#instruments_pop_up').mouseleave(function() {
+		$(this).hide();
+	});
+
+	$('#seeking_pop_up').mouseleave(function() {
+		$(this).hide();
+	});
+
+	$('#city_field').mouseleave(function() {
+		$(this).hide();
+		$('#city_search').text($(this).val());
+	});
+
+
+
 	$('#update_profile').hide();
 	$('#city_field').hide();
 
@@ -376,19 +405,19 @@ $(document).ready(function() {
 
 	//HOME PAGE SEARCH FIELDS
 
-	$('#instrument_search').click(function() {
+	$('#instrument_search').hover(function() {
 		$('#city_field').hide();
 		loadInstruments('instr_search');
 		$('#genre_search_pop_up').hide();
 	});
 
-	$('#genre_search').click(function() {
+	$('#genre_search').hover(function() {
 		$('#city_field').hide();
 		loadInstruments('genre_search');
 		$('#instr_search_pop_up').hide();
 	});
 
-	$('#city_search').click(function() {
+	$('#city_search').hover(function() {
 		$('#genre_search_pop_up').hide();
 		$('#instr_search_pop_up').hide();
 		$('#city_field').show();
