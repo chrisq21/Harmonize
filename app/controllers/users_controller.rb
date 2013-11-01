@@ -113,7 +113,7 @@ class UsersController < ApplicationController
 		message.user_id = params[:message_to]
 		message.description = params[:description]
 		message.save
-		redirect_to User.find(params[:message_to])
+		redirect_to messages_path
 	end
 
 	def delete_message
