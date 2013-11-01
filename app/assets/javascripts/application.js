@@ -66,7 +66,7 @@ function loadInstruments(from) {
 		html ='';
 		html+='<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: inline-block; position: absolute; left: '+left+'px; top: '+top+'px;  margin-bottom: 5px; *width: 180px;">';
 			html+='<li class="dropdown-submenu '+drop_down_id+'">';
-				html+='<a tabindex="-1" href="#">Rock</a>';
+				html+='<a data-remote="true" tabindex="-1" href="#">Rock</a>';
 				html+='<ul class="dropdown-menu">';
 					html+='<li><a data-remote="true" tabindex="-1" href="#">Metal</a></li>';
 					html+='<li class="genres_drop_down"><a data-remote="true" href="#">Alternative</a></li>';
@@ -188,6 +188,8 @@ function loadInstruments(from) {
 
 $(document).ready(function() {
 	
+
+
 	var instr_counter = 0;
 	var genre_counter = 0;
 	var seeking_counter = 0;
@@ -197,6 +199,12 @@ $(document).ready(function() {
 	var seeking_update_counter = 0;
 	var exp_counter = 0;
 	var link_counter = 0;
+
+	$(document).click(function() {
+		$('#genres_pop_up').hide();
+		$('#instruments_pop_up').hide();
+		$('#seeking_pop_up').hide();
+	});
 	$('#update_profile').hide();
 	$('#city_field').hide();
 
@@ -247,7 +255,7 @@ $(document).ready(function() {
 		link_counter++;
 		$("#profile_bottom").append('<br>');
 		$("#profile_bottom").append('<input type="text" id="title_val'+link_counter+'" placeholder="Link Description">');
-		$("#profile_bottom").append('<input type="text" id="link_val'+link_counter+'" placeholder="URL">');
+		$("#profile_bottom").append('<input type="text" id="link_val'+link_counter+'" value="https://" placeholder="URL">');
 		$('#update_form').append('<input type="hidden" name="link[title][]" id="title'+link_counter+'">');
 		$('#update_form').append('<input type="hidden" name="link[url][]" id="link'+link_counter+'">');
 	});	
