@@ -146,7 +146,7 @@ function loadInstruments(from) {
 			html += '<li class="dropdown-submenu">';
 				html += '<a data-remote="true" tabindex="-1" href="#">Guitar</a>';
 				html += '<ul class="dropdown-menu '+drop_down_id+'">';
-					html += '<li><a data-remote="true" tabindex="-1" href="#">Acoustic</a></li>';
+					html += '<li><a data-remote="true" tabindex="-1" href="#">Acoustic Guitar</a></li>';
 					html += '<li class="option"><a data-remote="true" href="#">Banjo</a></li>';
 					html += '<li><a data-remote="true" href="#">Bass</a></li>';
 					html += '<li><a data-remote="true" href="#">Lead Guitar</a></li>';

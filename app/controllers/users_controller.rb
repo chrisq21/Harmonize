@@ -113,7 +113,7 @@ class UsersController < ApplicationController
 		message.user_id = params[:message_to]
 		message.description = params[:description]
 		message.save
-		redirect_to messages_path
+		redirect_to User.find(message.user_id)
 	end
 
 	def delete_message
@@ -121,36 +121,52 @@ class UsersController < ApplicationController
 		redirect_to messages_path
 	end
 
-	def create	
+	def create		
+	
+		flash[:notice] = Array.new()
 		if params[:user][:confirm_password] == params[:user][:password]
 			@user = User.new(user_params)	
-			@user.zip.to_s.to_region(city: true)
-			@user.city = @user.zip.to_s.to_region(city: true)
-			if @user.save
-				instruments = Array.new(params[:instruments])
-				instruments.each do |i|
-					new_instrument = @user.instruments.new(instrument: i)
-					new_instrument.save
-				end	
-				genres = Array.new(params[:genres])
-				genres.each do |g|
-					new_genre = @user.genres.new(genre: g)
-					new_genre.save
-				end	
-				seeking = Seeking.new(user_id: @user.id)
-				seeking.save
-				seeking_instruments = Array.new(params[:seeking])
-				seeking_instruments.each do |s|
-					seeking.instruments.new(instrument: s).save
-				end	
-				
-	  			sign_in(@user)
-	  			redirect_to user_path(@user[:id])
+			begin
+				@user.city = @user.zip.to_s.to_region(city: true)
+			rescue ArgumentError 
+				flash[:notice].push('Please Enter A Valid Zip Code') 
+			end	
+
+			if @user.valid?
+				if params[:instruments] && params[:genres] && params[:seeking]
+					@user.save
+					instruments = Array.new(params[:instruments])
+					instruments.each do |i|
+						new_instrument = @user.instruments.new(instrument: i)
+						new_instrument.save
+					end
+					genres = Array.new(params[:genres])
+
+					genres.each do |g|
+						new_genre = @user.genres.new(genre: g)
+						new_genre.save
+					end	
+
+					seeking = Seeking.new(user_id: @user.id)
+					seeking.save
+					seeking_instruments = Array.new(params[:seeking])
+
+					seeking_instruments.each do |s|
+						seeking.instruments.new(instrument: s).save
+					end
+					sign_in(@user)
+					redirect_to @user
+				else
+					flash[:notice].push('Please Complete All Fields') 
+					redirect_to new_user_path
+
+				end		
 	  		else
-	  			redirect_to new_user_path, flash[:notice] = @user.errors.full_messages
+	  			flash[:notice].push('User Not Valid')
+	  			redirect_to new_user_path
 	  		end
 		else	
-			flash[:notice] = Array.new()
+			
 			flash[:notice].push('Passwords Did Not Match')
 			redirect_to new_user_path
 		end
