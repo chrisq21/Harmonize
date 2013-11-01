@@ -204,7 +204,9 @@ $(document).ready(function() {
 		$('#genres_pop_up').hide();
 		$('#instruments_pop_up').hide();
 		$('#seeking_pop_up').hide();
-		// $('#genre_search_pop_up').hide();
+		$('#genre_search_pop_up').hide();
+		$('#instr_search_pop_up').hide();
+		// $('#city_field').hide();
 	});
 
 	$('#genre_search_pop_up').mouseleave(function() {
@@ -228,8 +230,11 @@ $(document).ready(function() {
 	});
 
 	$('#city_field').mouseleave(function() {
+		if($(this).val() != '') {
+			$('#city_search').text($(this).val());
+			
+		}
 		$(this).hide();
-		$('#city_search').text($(this).val());
 	});
 
 
