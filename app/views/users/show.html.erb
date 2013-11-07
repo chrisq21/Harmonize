@@ -9,6 +9,7 @@
 				<%= image_tag @user.profile_image_url %>
 			<% end %>	
 		</div><!--  this is where the profile image appears -->
+		<% if signed_in? %>
 		<div id="edit_save" class="right blkbutton">
 			<% if @user.id == session[:user_id] %>	
 				<a data-remote='true' id='edit_profile'>Edit Profile</a>
@@ -17,6 +18,7 @@
 				<a data-remote='true' id='send_message' data-toggle="modal" data-target="#myModal">Message <%= @user.first_name %></a>	
 			<% end %>
 		</div>
+		<% end %>
 
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
@@ -30,10 +32,10 @@
 					<textarea name="description" form='message_form' cols="200" rows="3" ></textarea>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <button type="button" class="blkbutton" data-dismiss="modal">Close</button>
 			        <input type="hidden" name='message_to' value=<%=@user.id %>>
 			        <input type="hidden" name='authenticity_token' id='token' value=<%=form_authenticity_token %>>
-			        <input type="submit" class="btn btn-primary" value='Send'>
+			        <input type="submit" class="blk1button" value='Send'>
 			      </div>
 		      </form>
 		    </div><!-- /.modal-content -->
@@ -42,7 +44,7 @@
 
 
 		<!-- Main Info -->
-		<h2 id="name_label"><span class='user_info' id='name'><%= @user.first_name + " " + @user.last_name %></span></h2>
+		<h2 id="name_label"><span class='user_info' style='font-size: 30px;' id='name'><%= @user.first_name + " " + @user.last_name %></span></h2>
 		
 		<h5>Location: <span class='user_info' id='city'><%= @user.city %></span></h5>
 		<h5>Email: <span class='user_info' id='email'><%= @user.email %></span></h5>
@@ -112,7 +114,7 @@
 			<div id="pro_bottom_right" class="right">
 
 				<!-- Experience -->
-				<h4 id='instr_experience'>Experience With</h4>
+				<h4 id='instr_experience'>Experience As</h4>
 				<% @user.instruments.reverse.each do |instrument| %>
 				<h5 style='display: inline-block;'><i><%= instrument.instrument %></i></h5>
 

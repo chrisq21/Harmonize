@@ -72,7 +72,7 @@
       </td>
       <td><%= link_to user.first_name + " " + user.last_name, user, class: 'bold'%></td>
       <td><%= user.city %></td>
-      <td><%= user.instruments.pluck(:instrument).join(', ') %></td>
+      <td><b><%= user.instruments.pluck(:instrument).join(', ') %></b></td>
       <td><%= user.genres.pluck(:genre).join(', ') %></td>
       <td><%= user.seeking.instruments.pluck(:instrument).join(', ') %></td>
     </tr>
