@@ -1,4 +1,0 @@
-environments: 
-  production: 
-   copy_exclude: 
-   - .git

@@ -9,167 +9,166 @@
 	<% end %> 
 
 		<div id="new_top">
+			<div id="genre" class='genre_options'>
+				<h4>Genres: </h4>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+					<li class="dropdown-submenu">
+						<a data-remote="true" tabindex="-1" href="#">Rock</a>
+						<ul class="dropdown-menu">
+							<li><a data-remote="true" tabindex="-1" href="#">Metal</a></li>
+							<li class='genre_options'><a data-remote="true" href="#">Alternative</a></li>
+							<li class='genre_options'><a data-remote="true" href="#">Post Rock</a></li>
+							<li class='genre_options'><a data-remote="true" href="#">Classic Rock</a></li>
+							<li class='genre_options'><a data-remote="true" href="#">Punk</a></li>
+							<li class='genre_options'><a data-remote="true" href="#">Indie</a></li>
+						</ul>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">Blues</a>	
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">Electronic</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">Country</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">Folk</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">Celtic</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">Soul</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">R&B</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">Hip Hop</a>
+					</li>
+				</ul>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">Funk</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">Rap</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">Pop</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">Covers</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">Reggae</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">Jazz</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">Ska</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">Latin</a>
+					</li>
+					<li class="dropdown-submenu genre_options">
+						<a data-remote="true" tabindex="-1" href="#">Bluegrass</a>
+					</li>
+				</ul>
+				<h4 id='genre_results'></h4>
+			</div>
 
-				<div id="genre" class='genre_options'>
-					<h4>Genres: </h4>
+			<div id="main_instr" class='col-md-6'>
+				<div class='instrument_options'>
+					<h4>Instruments You Play:</h4>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
 						<li class="dropdown-submenu">
-							<a data-remote="true" tabindex="-1" href="#">Rock</a>
-							<ul class="dropdown-menu">
-								<li><a data-remote="true" tabindex="-1" href="#">Metal</a></li>
-								<li class='genre_options'><a data-remote="true" href="#">Alternative</a></li>
-								<li class='genre_options'><a data-remote="true" href="#">Post Rock</a></li>
-								<li class='genre_options'><a data-remote="true" href="#">Classic Rock</a></li>
-								<li class='genre_options'><a data-remote="true" href="#">Punk</a></li>
-								<li class='genre_options'><a data-remote="true" href="#">Indie</a></li>
+							<a tabindex="-1" href="#">Guitar</a>
+							<ul class="dropdown-menu instr_options">
+								<li><a data-remote="true" tabindex="-1" href="#">Acoustic Guitar</a></li>
+								<li><a data-remote="true" href="#">Banjo</a></li>
+								<li><a data-remote="true" href="#">Bass</a></li>
+								<li><a data-remote="true" href="#">Lead Guitar</a></li>
+								<li><a data-remote="true" href="#">Rhythm Guitar</a></li>
 							</ul>
 						</li>
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">Blues</a>	
+						<li class="dropdown-submenu instr_options">
+							<a data-remote="true" tabindex="-1" href="#">Drums</a>
+							<ul class="dropdown-menu">
+								<li><a data-remote="true" tabindex="-1" href="#">African Drums</a></li>
+								<li><a data-remote="true" href="#">Drum Set</a></li>
+								<li><a data-remote="true" href="#">miscellaneous</a></li>
+							</ul>
 						</li>
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">Electronic</a>
+						<li class="dropdown-submenu instr_options">
+							<a data-remote="true" tabindex="-1" href="#">Keyboard</a>
+							<ul class="dropdown-menu">
+								<li><a data-remote="true" tabindex="-1" href="#">Electric Keyboard</a></li>
+								<li><a data-remote="true" href="#">Organ</a></li>
+								<li><a data-remote="true" href="#">Piano</a></li>
+								<li><a data-remote="true" href="#">Percussive</a></li>
+								<li><a data-remote="true" href="#">Synth</a></li>
+							</ul>
 						</li>
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">Country</a>
-						</li>
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">Folk</a>
-						</li>
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">Celtic</a>
-						</li>
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">Soul</a>
-						</li>
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">R&B</a>
-						</li>
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">Hip Hop</a>
+						<li class="dropdown-submenu instr_options">
+							<a data-remote="true" tabindex="-1" href="#">Vocals</a>
+							<ul class="dropdown-menu">
+								<li><a data-remote="true" tabindex="-1" href="#">Beat Boxer</a></li>
+								<li><a data-remote="true" href="#">Rapper</a></li>
+								<li><a data-remote="true" href="#">Singer</a></li>
+							</ul>
 						</li>
 					</ul>
+				</div>
+				<h4 id='instrument_results'></h4>
+			</div>
+
+			<div id="seeker" class='col-md-6'>
+				<div class='seeking_options'>
+					<h4>Seeking:</h4>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">Funk</a>
+						<li class="dropdown-submenu">
+							<a data-remote="true" tabindex="-1" href="#">Guitar</a>
+							<ul class="dropdown-menu seeking_options">
+								<li><a data-remote="true" tabindex="-1" href="#">Acoustic Guitar</a></li>
+								<li class='option'><a data-remote="true" href="#">Banjo</a></li>
+								<li><a data-remote="true" href="#">Bass</a></li>
+								<li><a data-remote="true" href="#">Lead Guitar</a></li>
+								<li><a data-remote="true" href="#">Rhythm Guitar</a></li>
+							</ul>
 						</li>
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">Rap</a>
+						<li class="dropdown-submenu seeking_options">
+							<a data-remote="true" tabindex="-1" href="#">Drums</a>
+							<ul class='dropdown-menu'>
+								<li tabindex='-1'><a data-remote="true" href="#">African Drums</a></li>
+								<li><a data-remote="true" href="#">Drum Set</a></li>
+								<li><a data-remote="true" href="#">miscellaneous</a></li>
+							</ul>
 						</li>
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">Pop</a>
+						<li class="dropdown-submenu seeking_options">
+							<a data-remote="true" tabindex="-1" href="#">Keyboard</a>
+							<ul class="dropdown-menu">
+								<li><a data-remote="true" tabindex="-1" href="#">Electric Keyboard</a></li>
+								<li><a data-remote="true" href="#">Organ</a></li>
+								<li><a data-remote="true" href="#">Piano</a></li>
+								<li><a data-remote="true" href="#">Percussive</a></li>
+								<li><a data-remote="true" href="#">Synth</a></li>
+							</ul>
 						</li>
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">Covers</a>
-						</li>
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">Reggae</a>
-						</li>
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">Jazz</a>
-						</li>
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">Ska</a>
-						</li>
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">Latin</a>
-						</li>
-						<li class="dropdown-submenu genre_options">
-							<a data-remote="true" tabindex="-1" href="#">Bluegrass</a>
+						<li class="dropdown-submenu seeking_options">
+							<a data-remote="true" tabindex="-1" href="#">Vocals</a>
+							<ul class="dropdown-menu">
+								<li><a data-remote="true" tabindex="-1" href="#">Beat Boxer</a></li>
+								<li><a data-remote="true" href="#">Rapper</a></li>
+								<li><a data-remote="true" href="#">Singer</a></li>
+							</ul>
 						</li>
 					</ul>
-					<h4 id='genre_results'></h4>
+					<h4 id='seeking_results'></h4>
 				</div>
-
-				<div id="main_instr" class='col-md-6'>
-					<div class='instrument_options'>
-						<h4>Instruments You Play:</h4>
-						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
-							<li class="dropdown-submenu">
-								<a tabindex="-1" href="#">Guitar</a>
-								<ul class="dropdown-menu instr_options">
-									<li><a data-remote="true" tabindex="-1" href="#">Acoustic Guitar</a></li>
-									<li><a data-remote="true" href="#">Banjo</a></li>
-									<li><a data-remote="true" href="#">Bass</a></li>
-									<li><a data-remote="true" href="#">Lead Guitar</a></li>
-									<li><a data-remote="true" href="#">Rhythm Guitar</a></li>
-								</ul>
-							</li>
-							<li class="dropdown-submenu instr_options">
-								<a data-remote="true" tabindex="-1" href="#">Drums</a>
-								<ul class="dropdown-menu">
-									<li><a data-remote="true" tabindex="-1" href="#">African Drums</a></li>
-									<li><a data-remote="true" href="#">Drum Set</a></li>
-									<li><a data-remote="true" href="#">miscellaneous</a></li>
-								</ul>
-							</li>
-							<li class="dropdown-submenu instr_options">
-								<a data-remote="true" tabindex="-1" href="#">Keyboard</a>
-								<ul class="dropdown-menu">
-									<li><a data-remote="true" tabindex="-1" href="#">Electric Keyboard</a></li>
-									<li><a data-remote="true" href="#">Organ</a></li>
-									<li><a data-remote="true" href="#">Piano</a></li>
-									<li><a data-remote="true" href="#">Percussive</a></li>
-									<li><a data-remote="true" href="#">Synth</a></li>
-								</ul>
-							</li>
-							<li class="dropdown-submenu instr_options">
-								<a data-remote="true" tabindex="-1" href="#">Vocals</a>
-								<ul class="dropdown-menu">
-									<li><a data-remote="true" tabindex="-1" href="#">Beat Boxer</a></li>
-									<li><a data-remote="true" href="#">Rapper</a></li>
-									<li><a data-remote="true" href="#">Singer</a></li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-					<h4 id='instrument_results'></h4>
-				</div>
-
-				<div id="seeker" class='col-md-6'>
-					<div class='seeking_options'>
-						<h4>Seeking:</h4>
-						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
-							<li class="dropdown-submenu">
-								<a data-remote="true" tabindex="-1" href="#">Guitar</a>
-								<ul class="dropdown-menu seeking_options">
-									<li><a data-remote="true" tabindex="-1" href="#">Acoustic Guitar</a></li>
-									<li class='option'><a data-remote="true" href="#">Banjo</a></li>
-									<li><a data-remote="true" href="#">Bass</a></li>
-									<li><a data-remote="true" href="#">Lead Guitar</a></li>
-									<li><a data-remote="true" href="#">Rhythm Guitar</a></li>
-								</ul>
-							</li>
-							<li class="dropdown-submenu seeking_options">
-								<a data-remote="true" tabindex="-1" href="#">Drums</a>
-								<ul class='dropdown-menu'>
-									<li tabindex='-1'><a data-remote="true" href="#">African Drums</a></li>
-									<li><a data-remote="true" href="#">Drum Set</a></li>
-									<li><a data-remote="true" href="#">miscellaneous</a></li>
-								</ul>
-							</li>
-							<li class="dropdown-submenu seeking_options">
-								<a data-remote="true" tabindex="-1" href="#">Keyboard</a>
-								<ul class="dropdown-menu">
-									<li><a data-remote="true" tabindex="-1" href="#">Electric Keyboard</a></li>
-									<li><a data-remote="true" href="#">Organ</a></li>
-									<li><a data-remote="true" href="#">Piano</a></li>
-									<li><a data-remote="true" href="#">Percussive</a></li>
-									<li><a data-remote="true" href="#">Synth</a></li>
-								</ul>
-							</li>
-							<li class="dropdown-submenu seeking_options">
-								<a data-remote="true" tabindex="-1" href="#">Vocals</a>
-								<ul class="dropdown-menu">
-									<li><a data-remote="true" tabindex="-1" href="#">Beat Boxer</a></li>
-									<li><a data-remote="true" href="#">Rapper</a></li>
-									<li><a data-remote="true" href="#">Singer</a></li>
-								</ul>
-							</li>
-						</ul>
-						<h4 id='seeking_results'></h4>
-					</div>
-				</div>
+			</div>
 		</div>
 		
 		<div id="reg_form">
