@@ -6,7 +6,8 @@ Harmonize::Application.routes.draw do
   post "users/messages", to: "users#new_message", as: :new_message
   post "users/messages/:id", to: "users#delete_message", as: :delete_message
   get "login", to: "sessions#new", as: :login
-  resources :users, except: :update
+  get "users/new", to: "users#new", as: :new_user
+  resources :users, except: [:update, :new]
   post "users/:id", to: "users#update"
 
   delete "sessions/:id", to: "sessions#destroy", as: :destroy

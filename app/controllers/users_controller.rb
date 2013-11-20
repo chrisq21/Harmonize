@@ -122,7 +122,6 @@ class UsersController < ApplicationController
 	end
 
 	def create		
-	
 		flash[:notice] = Array.new()
 		if params[:user][:confirm_password] == params[:user][:password]
 			@user = User.new(user_params)	
