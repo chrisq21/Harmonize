@@ -6,7 +6,7 @@
 			<% if @user.profile_image.to_s == '' %>
 				<%= image_tag "profile_placeholder.png" %>
 			<% else %>	
-				<%=  %><!-- image_tag @user.profile_image_url -->
+				<%= image_tag @user.url %>
 
 			<% end %>	
 		</div><!--  this is where the profile image appears -->
